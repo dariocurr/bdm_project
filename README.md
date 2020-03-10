@@ -1,5 +1,2 @@
 # bdm
-project for Big Data Management
-
-# bdm
-SUCA
+project for Big Data Management!
