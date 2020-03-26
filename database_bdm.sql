@@ -53,7 +53,7 @@ CREATE TABLE pubblicazione (
   nome_rivista TEXT,
   tipologia TEXT,
   id_area_ricerca INT,
-  indice_qualita INT NOT NULL,
+  indice_qualita INT,
   FOREIGN KEY(id_area_ricerca) REFERENCES area_ricerca(id_area_ricerca)
 );
 
