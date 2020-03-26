@@ -2,6 +2,8 @@
 Progettazione di un Data Warehouse
 
 ### Team 1
+> fetch > pull > commit > push
+
 | Cognome   | Nome       | Matricola |
 |-----------|------------|-----------|
 | Buffa     | Salvatore  |  0697879  |
