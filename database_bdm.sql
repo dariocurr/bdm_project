@@ -15,3 +15,5 @@ CREATE TABLE personale_ta (
     anagrafica_personale CHAR(16),
     FOREIGN KEY(anagrafica_personale) REFERENCES personale(cf)
 );
+
+prova prova
