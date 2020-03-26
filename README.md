@@ -5,6 +5,6 @@ Progettazione di un Data Warehouse
 | Cognome   | Nome       | Matricola |
 |-----------|------------|-----------|
 | Buffa     | Salvatore  |           |
-| Curreri   | Dario      |           |
+| Curreri   | Dario      |  0705923  |
 | Domingo   | Emanuele   |  0696006  |
 | Gristina  | Salvatore  |           |
