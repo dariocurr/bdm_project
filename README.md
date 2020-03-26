@@ -7,4 +7,4 @@ Progettazione di un Data Warehouse
 | Buffa     | Salvatore  |           |
 | Curreri   | Dario      |  0705923  |
 | Domingo   | Emanuele   |  0696006  |
-| Gristina  | Salvatore  |           |
+| Gristina  | Salvatore A.  |   0702838        |
