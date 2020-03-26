@@ -165,7 +165,7 @@ CREATE TABLE finanzia_3 (
   voce_spesa INT,
   progetto_ricerca INT,
   FOREIGN KEY(voce_spesa) REFERENCES voce_spesa(id_voce_spesa),
-  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto_ricerca)
+  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );
 
 CREATE TABLE finanzia_2 (
@@ -179,7 +179,7 @@ CREATE TABLE dirige (
   personale_strutturato INT,
   progetto_ricerca INT,
   da_data DATE,
-  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto_ricerca),
+  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
   FOREIGN KEY(personale_strutturato) REFERENCES personale_strutturato(id_personale_strutturato)
 );
 
@@ -188,7 +188,7 @@ CREATE TABLE mantiene (
   attivita_didattica INT,
   ruolo VARCHAR(30),
   anno_accademico VARCHAR(9),
-  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto_ricerca),
+  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
   FOREIGN KEY(attivita_didattica) REFERENCES attivita_didattica(id_attivita_didattica)
 );
 
@@ -205,5 +205,5 @@ CREATE TABLE partecipa_2 (
   progetto_ricerca INT,
   ruolo VARCHAR(30),
   FOREIGN KEY(personale_ricerca) REFERENCES personale_ricerca(id_personale_ricerca),
-  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto_ricerca),
+  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
 );
