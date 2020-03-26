@@ -1,8 +1,10 @@
-# bdm
-project for Big Data Management
+# Big Data Management
+Progettazione di un Data Warehouse
 
-# studenti
-Salvatore Buffa
-Dario Curreri
-Emanuele Domingo
-Salvatore Gristina
+### Team 1
+| Cognome   | Nome       | Matricola |
+|-----------|------------|-----------|
+| Buffa     | Salvatore  |           |
+| Curreri   | Dario      |           |
+| Domingo   | Emanuele   |  0696006  |
+| Gristina  | Salvatore  |           |
