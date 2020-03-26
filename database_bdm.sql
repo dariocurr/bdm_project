@@ -53,7 +53,7 @@ CREATE TABLE pubblicazione (
   nome_rivista TEXT,
   tipologia TEXT,
   id_area_ricerca INT,
-  FOREIGN KEY(pubblicazione.id_area_ricerca) REFERENCES area_ricerca(area_ricerca.id_area_ricerca)
+  FOREIGN KEY(id_area_ricerca) REFERENCES area_ricerca(id_area_ricerca)
 );
 
 CREATE TABLE progetto_ricerca (
@@ -64,7 +64,7 @@ CREATE TABLE progetto_ricerca (
   data_fine DATE,
   budget DECIMAL(15, 2),
   id_area_ricerca INT,
-  FOREIGN KEY(progetto_ricerca.id_area_ricerca) REFERENCES area_ricerca(area_ricerca.id_area_ricerca)
+  FOREIGN KEY(id_area_ricerca) REFERENCES area_ricerca(id_area_ricerca)
 );
 
 CREATE TABLE evento (
