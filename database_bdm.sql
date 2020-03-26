@@ -205,5 +205,5 @@ CREATE TABLE partecipa_2 (
   progetto_ricerca INT,
   ruolo VARCHAR(30),
   FOREIGN KEY(personale_ricerca) REFERENCES personale_ricerca(id_personale_ricerca),
-  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
+  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );
