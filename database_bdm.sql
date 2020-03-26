@@ -134,7 +134,7 @@ CREATE TABLE voce_spesa (
 CREATE TABLE organizza (
   personale_strutturato INT,
   evento INT,
-  FOREIGN KEY(personale_strutturato) REFERENCES dirige(personale_strutturato),
+  FOREIGN KEY(personale_strutturato) REFERENCES personale_strutturato(id_personale_strutturato),
   FOREIGN KEY(evento) REFERENCES evento(id_evento)
 );
 
