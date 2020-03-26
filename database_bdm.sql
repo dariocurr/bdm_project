@@ -15,3 +15,37 @@ CREATE TABLE personale_ta (
     anagrafica_personale CHAR(16),
     FOREIGN KEY(anagrafica_personale) REFERENCES personale(cf)
 );
+
+CREATE TABLE personale_ricerca (
+  id_personale_ricerca INT PRIMARY KEY AUTO_INCREMENT,
+  tipologia_contratto VARCHAR(50),
+  stipendio DECIMAL(15, 2) NOT NULL,
+  anagrafica_personale CHAR(16),
+  FOREIGN KEY(anagrafica_personale) REFERENCES personale(cf)
+)
+
+
+CREATE TABLE personale_non_strutturato (
+  id_personale_nonstrutturato INT PRIMARY KEY AUTO_INCREMENT
+  laboratorio_riferimento VARCHAR(20)
+  telefono VARCHAR(15)
+  FOREIGN KEY(personale_ricerca) REFERENCES
+)
+
+
+CREATE TABLE evento (
+    id_evento INT PRIMARY KEY AUTO_INCREMENT,
+    titolo VARCHAR(20) NOT NULL,
+    tipo VARCHAR(20),
+    data DATE NOT NULL,
+
+)
+
+CREATE TABLE pubblicazione (
+
+)
+
+
+CREATE TABLE retribuisce (
+
+)
