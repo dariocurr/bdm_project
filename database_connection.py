@@ -1,13 +1,13 @@
 import pymysql.cursors
 
-connection = pymysql.connect(host='localhost',port=3306,user='root',password='',db='test');
+connection = pymysql.connect(host='localhost', port=3306, user='root', password='', db='bdm')
 
 try:
-    with connection.cursor() as cursor:
+    with connection.cursor() as sql:
         # Read a single record
-        sql = "SELECT `name` FROM `test`"
-        cursor.execute(sql)
-        result = cursor.fetchone()
+        query = "SELECT * FROM `personale`"
+        sql.execute(query)
+        result = sql.fetchone()
         print(result)
 finally:
     connection.close()
