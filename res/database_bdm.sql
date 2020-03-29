@@ -1,9 +1,41 @@
+CREATE TABLE ente (
+  id_ente INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  descrizione TEXT,
+  livello TEXT,
+  indirizzo TEXT
+);
+
+CREATE TABLE fondo (
+  id_fondo INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  budget DECIMAL(15, 2),
+  ente INT,
+  FOREIGN KEY(ente) REFERENCES ente(id_ente)
+);
+
+CREATE TABLE dipartimento (
+  id_dipartimento INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  indirizzo TEXT,
+  fondo INT,
+  FOREIGN KEY(fondo) REFERENCES fondo(id_fondo)
+);
+
+CREATE TABLE archivio_dipartimentale (
+  id_archivio_dipartimentale INT PRIMARY KEY AUTO_INCREMENT,
+  dipartimento INT,
+  FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
+);
+
 CREATE TABLE personale (
     cf CHAR(16) PRIMARY KEY,
     nome VARCHAR(30) NOT NULL,
     cognome VARCHAR(30) NOT NULL,
     data_nascita DATE,
-    residenza TEXT
+    residenza TEXT,
+    dipartimento INT,
+    FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
 );
 
 CREATE TABLE personale_ta (
@@ -80,7 +112,9 @@ CREATE TABLE evento (
     partitecipanti_effettivi INT,
     ricavo DECIMAL(15, 2),
     progetto_ricerca INT,
-    FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
+    archivio_dipartimentale INT,
+    FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
+    FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale)
 );
 
 CREATE TABLE attivita_didattica (
@@ -96,22 +130,6 @@ CREATE TABLE agenzia_esterna (
   descrizione TEXT,
   tipologia TEXT,
   indirizzo TEXT
-);
-
-CREATE TABLE ente (
-  id_ente INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
-  descrizione TEXT,
-  livello TEXT,
-  indirizzo TEXT
-);
-
-CREATE TABLE fondo (
-  id_fondo INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
-  budget DECIMAL(15, 2),
-  ente INT,
-  FOREIGN KEY(ente) REFERENCES ente(id_ente)
 );
 
 CREATE TABLE voce_fondo (
@@ -206,5 +224,29 @@ CREATE TABLE partecipa_2 (
   progetto_ricerca INT,
   ruolo VARCHAR(30),
   FOREIGN KEY(personale_ricerca) REFERENCES personale_ricerca(id_personale_ricerca),
+  FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
+);
+
+CREATE TABLE ruolo (
+  id_ruolo INT PRIMARY KEY AUTO_INCREMENT,
+  data_inizio DATE,
+  data_fine DATE,
+  stipendio DECIMAL(15, 2),
+  tipologia_contratto TEXT,
+  personale_ricerca INT,
+  FOREIGN KEY(personale_ricerca) REFERENCES personale_ricerca(id_personale_ricerca)
+);
+
+CREATE TABLE contiene_1 (
+  archivio_dipartimentale INT,
+  pubblicazione INT,
+  FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale),
+  FOREIGN KEY(pubblicazione) REFERENCES pubblicazione(id_pubblicazione)
+);
+
+CREATE TABLE contiene_3 (
+  archivio_dipartimentale INT,
+  progetto_ricerca INT,
+  FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale),
   FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );

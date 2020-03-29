@@ -6,12 +6,16 @@ connection = pymysql.connect(host='localhost',
                              password='',
                              db='database_bdm')
 
-try:
-    with connection.cursor() as sql:
-        # Read a single record
-        query = "SELECT * FROM `personale`"
-        sql.execute(query)
-        result = sql.fetchone()
-        print(result)
-finally:
-    connection.close()
+
+def execute_query(query):
+    try:
+        with connection.cursor() as sql:
+            # Read a single record
+            sql.execute(query)
+            result = sql.fetchone()
+            print(result)
+    finally:
+        connection.close()
+
+
+execute_query("SELECT * FROM `personale`")
