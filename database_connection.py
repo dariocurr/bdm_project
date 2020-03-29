@@ -1,6 +1,10 @@
 import pymysql.cursors
 
-connection = pymysql.connect(host='localhost', port=3306, user='root', password='', db='bdm')
+connection = pymysql.connect(host='localhost',
+                             port=3306,
+                             user='root',
+                             password='',
+                             db='database_bdm')
 
 try:
     with connection.cursor() as sql:
