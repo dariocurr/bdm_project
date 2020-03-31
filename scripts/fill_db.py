@@ -1,4 +1,3 @@
-# https://pypi.org/project/python-codicefiscale/, libreria per generare cf
 import datetime
 import random
 import numpy as np
