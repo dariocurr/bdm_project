@@ -1,6 +1,6 @@
 CREATE TABLE ente (
   id_ente INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
+  nome TEXT NOT NULL,
   descrizione TEXT,
   livello TEXT,
   indirizzo TEXT
@@ -8,7 +8,7 @@ CREATE TABLE ente (
 
 CREATE TABLE fondo (
   id_fondo INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
+  nome TEXT NOT NULL,
   budget DECIMAL(15, 2),
   ente INT,
   FOREIGN KEY(ente) REFERENCES ente(id_ente)
@@ -16,7 +16,7 @@ CREATE TABLE fondo (
 
 CREATE TABLE dipartimento (
   id_dipartimento INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
+  nome TEXT NOT NULL,
   indirizzo TEXT,
   fondo INT,
   FOREIGN KEY(fondo) REFERENCES fondo(id_fondo)
