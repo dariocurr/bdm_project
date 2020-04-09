@@ -10,6 +10,7 @@ CREATE TABLE fondo (
   id_fondo INT PRIMARY KEY AUTO_INCREMENT,
   nome TEXT NOT NULL,
   budget DECIMAL(15, 2),
+  data DATE,
   ente INT,
   FOREIGN KEY(ente) REFERENCES ente(id_ente)
 );
@@ -137,6 +138,7 @@ CREATE TABLE voce_fondo (
     nome VARCHAR(50) NOT NULL,
     descrizione TEXT,
     importo DECIMAL(15, 2) NOT NULL,
+    data DATE,
     fondo INT,
     FOREIGN KEY(fondo) REFERENCES fondo(id_fondo)
 );
