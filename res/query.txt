@@ -21,7 +21,7 @@ Query:
     20 Quale ricercatore ha tenuto più corsi dal 2015 ad oggi, per ogni dipartimento dell’Università di Palermo?
     21 Quale categoria tra il personale non strutturato, è stata retribuita maggiormente in media, per ogni università nell’ultimo anno?
     22 Quale dipartimento per ogni università ha speso più fondi negli ultimi 3 anni?
-    23 Chi sono i responsabili dei progetti di ricerca in cui sono stati spesi più fondi negli ultimi 5 anni, per ogni dipartimento dell’Università di Palermo?
+    *23 Chi sono i responsabili dei progetti di ricerca in cui sono stati spesi più fondi negli ultimi 5 anni, per ogni dipartimento dell’Università di Palermo?
     24 In quale dipartimento dell’Università di Torino sono state effettuate più promozioni nel 2019?
     25 Qual è la qualifica più frequente nel personale tecnico-amministrativo dell’Università di Roma?
 
