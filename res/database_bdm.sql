@@ -250,3 +250,4 @@ CREATE TABLE contiene_3 (
   FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale),
   FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );
+asdasd
