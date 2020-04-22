@@ -138,7 +138,6 @@ CREATE TABLE voce_fondo (
     nome VARCHAR(50) NOT NULL,
     descrizione TEXT,
     importo DECIMAL(15, 2) NOT NULL,
-    data DATE,
     fondo INT,
     FOREIGN KEY(fondo) REFERENCES fondo(id_fondo)
 );
@@ -149,6 +148,7 @@ CREATE TABLE voce_spesa (
   descrizione TEXT,
   importo DECIMAL(15, 2),
   copertura INT,
+  data DATE,
   FOREIGN KEY(copertura) REFERENCES fondo(id_fondo)
 );
 

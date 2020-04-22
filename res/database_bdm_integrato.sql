@@ -15,13 +15,11 @@ CREATE TABLE fondo (
   FOREIGN KEY(ente) REFERENCES ente(id_ente)
 );
 
-
 CREATE TABLE universita (
     id_universita INT PRIMARY KEY AUTO_INCREMENT,
     nome TEXT NOT NULL,
     citta VARCHAR(30)
 );
-
 
 CREATE TABLE dipartimento (
   id_dipartimento INT PRIMARY KEY AUTO_INCREMENT,
@@ -148,7 +146,6 @@ CREATE TABLE voce_fondo (
     nome VARCHAR(50) NOT NULL,
     descrizione TEXT,
     importo DECIMAL(15, 2) NOT NULL,
-    data DATE,
     fondo INT,
     FOREIGN KEY(fondo) REFERENCES fondo(id_fondo)
 );
@@ -159,6 +156,7 @@ CREATE TABLE voce_spesa (
   descrizione TEXT,
   importo DECIMAL(15, 2),
   copertura INT,
+  data DATE,
   FOREIGN KEY(copertura) REFERENCES fondo(id_fondo)
 );
 
