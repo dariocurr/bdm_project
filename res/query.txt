@@ -11,7 +11,7 @@ Query:
     10 Quali tipi di eventi nelle università di Roma hanno massimizzato il numero di partecipanti nell’ultimo anno?
     11 Quali eventi, tra quelli con più ricavi, tenuti dall’università di Torino hanno massimizzato il rapporto tra portata dell’edificio e partecipanti effettivi negli ultimi 2 anni?
     12 Quali sono le università che hanno divulgato pubblicazioni con indice di qualità sopra una soglia x in media nell’ultimo anno?
-    13 Qual è la figura tra il personale strutturato (professore ordinario, ...) che ha organizzato il maggior numero di eventi al politecnico di Napoli, negli ultimi 5 anni?
+    13 Qual è la figura tra il personale strutturato del politecnico di Napoli (professore ordinario, ...) che ha organizzato il maggior numero di eventi, negli ultimi 5 anni?
     14 In quale area di ricerca si sono fatte più attività nell’università di Milano negli ultimi 5 anni?
     15 Quale dipartimento ha ricevuto più fondi europei tra le università a disposizione negli ultimi 2 anni?
     16 Quale ente ha erogato più soldi per la ricerca scientifica alle università prese in considerazione, negli ultimi 3 anni?
@@ -27,7 +27,7 @@ Query:
 
 Fatti:
   Partecipa_2: 1
-  Organizza: 3, 13 *
+  - Organizza: 3, 13 *
   Evento: 4, 5, 10, 11 *
   Pubblica: 7, 8, 9 *
   Ruolo: 9, 24 *
@@ -37,9 +37,7 @@ Fatti:
   Mantiene: 20
   Personale TA: 25
   Finanzia_1: 17
-  Voce spesa: 22 *
-  Finanzia_3: 2, 16, 18, 23
-  Retribuisce: 6, 21
+  - Voce spesa: 22, 2, 16, 18, 23, 6, 21
 
 Sono stati creati gli alberi solo dei fatti contrassegnati con '*'.
 Inoltre, Finanzia e retribuisce visto l'albero di Voce_spesa possono essere raggruppati nello stesso fatto.
