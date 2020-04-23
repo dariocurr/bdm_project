@@ -1,0 +1,6 @@
+Voce spesa
+nome:  Contiene personale_strutturato, personale_non_strutturato, etc. Nello specifico all'importo viene attribuita la spesa (stipendio) per uno specifica
+entry del personale strutturato (o non strutturato), per questo motivo viene eliminato l'attributo stipendio. Ad esempio:
+Voce spesa con nome personale_strutturato ed importo x significa che avremo una chiave esterna contenente id_personale a cui è Associato lo stipendio importo x.
+Voce fondo
+nome: contiene il nome del fondo a cui ci stiamo riferenti, ad esempio x euro destinati alle sedie, y euro destinati alle attività di ricerca, etc.
