@@ -237,8 +237,8 @@ CREATE TABLE partecipa_2 (
   FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );
 
-CREATE TABLE ruolo (
-  id_ruolo INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE promozione (
+  id_promozione INT PRIMARY KEY AUTO_INCREMENT,
   data_inizio DATE,
   data_fine DATE,
   stipendio DECIMAL(15, 2),

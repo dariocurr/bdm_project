@@ -7,7 +7,7 @@ Query:
     6 Quanto grava, in media e con riferimento agli ultimi dieci anni, il costo del personale non strutturato sui dipartimenti dell'Università degli Studi di Palermo?
     7 Quali dipartimenti hanno massimizzato sia il numero di pubblicazioni che la diversificazione per argomento durante gli ultimi cinque anni in Sicilia?
     8 Se le pubblicazioni scientifiche sono caratterizzate anche attraverso un indice di qualità, mostrare l’andamento delle pubblicazioni per categoria di dipendente universitario e area geografica rispetto a tale indice, negli ultimi cinque anni.
-    9 Per le diverse tipologie di dipartimento (es., umanistici, scientifici, ecc.) rapportare il maggior numero di promozioni avvenuto nell’ultimo anno con l’indice di qualità medio delle promozioni per categoria di dipendente (le promozioni avvengono nella seguente direzione: Ricercatore Universitario -> Professore Associato -> Professore Ordinario).
+    *9 Per le diverse tipologie di dipartimento (es., umanistici, scientifici, ecc.) rapportare il maggior numero di promozioni avvenuto nell’ultimo anno con l’indice di qualità medio delle promozioni per categoria di dipendente (le promozioni avvengono nella seguente direzione: Ricercatore Universitario -> Professore Associato -> Professore Ordinario).
     10 Quali tipi di eventi nelle università di Roma hanno massimizzato il numero di partecipanti nell’ultimo anno?
     11 Quali eventi, tra quelli con più ricavi, tenuti dall’università di Torino hanno massimizzato il rapporto tra portata dell’edificio e partecipanti effettivi negli ultimi 2 anni?
     12 Quali sono le università che hanno divulgato pubblicazioni con indice di qualità sopra una soglia x in media nell’ultimo anno?
@@ -21,23 +21,22 @@ Query:
     20 Quale ricercatore ha tenuto più corsi dal 2015 ad oggi, per ogni dipartimento dell’Università di Palermo?
     21 Quale categoria tra il personale non strutturato, è stata retribuita maggiormente in media, per ogni università nell’ultimo anno?
     22 Quale dipartimento per ogni università ha speso più fondi negli ultimi 3 anni?
-    *23 Chi sono i responsabili dei progetti di ricerca in cui sono stati spesi più fondi negli ultimi 5 anni, per ogni dipartimento dell’Università di Palermo?
-    24 In quale dipartimento dell’Università di Torino sono state effettuate più promozioni nel 2019?
-    25 Qual è la qualifica più frequente nel personale tecnico-amministrativo dell’Università di Roma?
+    23 In quale dipartimento dell’Università di Torino sono state effettuate più promozioni nel 2019?
+    24 Qual è la qualifica più frequente nel personale tecnico-amministrativo dell’Università di Roma?
 
 Fatti:
   Partecipa_2: 1
   - Organizza: 3, 13 *
-  Evento: 4, 5, 10, 11 *
-  Pubblica: 7, 8, 9 *
-  Ruolo: 9, 24 *
+  - Evento: 4, 5, 10, 11 *
+  - Pubblica: 7, 8, 9 *
+  Promozione: 9, 23 *
   Progetto ricerca: 14
   Dipartimento: 15
   Collabora_2: 19
   Mantiene: 20
-  Personale TA: 25
+  Personale TA: 24
   Finanzia_1: 17
-  - Voce spesa: 22, 2, 16, 18, 23, 6, 21
+  - Voce spesa: 22, 2, 16, 18, 6, 21
 
 Sono stati creati gli alberi solo dei fatti contrassegnati con '*'.
 Inoltre, Finanzia e retribuisce visto l'albero di Voce_spesa possono essere raggruppati nello stesso fatto.
