@@ -54,6 +54,7 @@ CREATE TABLE personale_ricerca (
   tipologia_contratto TEXT,
   stipendio DECIMAL(15, 2),
   anagrafica_personale CHAR(16),
+  indice_qualita INT,
   FOREIGN KEY(anagrafica_personale) REFERENCES personale(cf)
 );
 
