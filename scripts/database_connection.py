@@ -12,9 +12,10 @@ def execute_query(query):
         with connection.cursor() as sql:
             # Read a single record
             sql.execute(query)
-            result = sql.fetchone()
+            result = sql.fetchall()
             if result is not None:
-                print(result)
+                for row in result:
+                    print(row)
             else:
                 connection.commit()
     finally:
