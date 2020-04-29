@@ -11,13 +11,8 @@ class database_connection():
                                            db=database)
 
     def execute_query(self, query):
-        try:
-            with self._connection.cursor() as sql:
-                sql.execute(query)
-                result = sql.fetchall()
-                if result is not None:
-                    return result
-                else:
-                    self._connection.commit()
-        finally:
-            self._connection.close()
+        with self._connection.cursor() as sql:
+            sql.execute(query)
+            result = sql.fetchall()
+            self._connection.commit()
+            return result

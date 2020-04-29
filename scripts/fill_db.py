@@ -3,13 +3,146 @@ import random
 import numpy as np
 import pandas as pd
 from codicefiscale import codicefiscale
+from database_connection import database_connection
 
 
+def data_random(anno_min, anno_max):
+    start_date = datetime.date(anno_min, 1, 1)
+    end_date = datetime.date(anno_max, 12, 31)
+    time_between_dates = end_date - start_date
+    days_between_dates = time_between_dates.days
+    random_number_of_days = random.randrange(days_between_dates)
+    return str(start_date + datetime.timedelta(days=random_number_of_days)).replace("-", "/")
+
+
+def creazione_enti():
+    #nome, descriizoni, livello, indirizzo
+    enti_palermo = list()
+    enti_torino = list()
+    enti_napoli = list()
+    enti_milano = list()
+    enti_palermo.append(("Azienda Sanitaria Provinciale di Palermo","","","Via Giacomo Gusmano, 24 - 90141 Palermo (PA)"))
+    enti_palermo.append(("Consorzio Universitario della Provincia di Palermo","http://www.consunipa.it/wordpress/ente/mission/","","Via Maqueda 100 - 90100 Palermo (PA)" ))
+    enti_palermo.append(("Consorzio Area Sviluppo Industriale Palermo","http://www.irsapsicilia.it/index.php?option=com_content&view=article&id=380&Itemid=684","","Via Enrico Ferruzza, 5 - 90124 Palermo (PA)"))
+    enti_palermo.append(("Ersu Palermo","www.ersupalermo.it","","Viale Delle Scienze, Edificio 1 - 90128 Palermo (PA)"))
+    enti_palermo.append(("Consiglio Nazionale delle Ricerche - CNR","www.cnr.it","","Piazzale Aldo Moro, 7 - 00185 Roma (RM)"))
+    enti_palermo.append(("Ordine degli Ingegneri della Provincia di Palermo","www.ingpa.com","","Via Francesco Crispi, 120 - 90139 Palermo (PA)"))
+    enti_palermo.append(("Ordine dei Farmacisti della Provincia di Palermo","www.ordinefarmacistipalermo.it","","Via Mariano Stabile N. 118/B - 90139 Palermo (PA)"))
+    enti_palermo.append(("SISPI - SISTEMA PALERMO INNOVAZIONE S.P.A.","www.sispi.it","","Via A.s.denti Di Piraino, 7 - 90142 Palermo (PA)"))
+    enti_palermo.append(("Teatro Biondo Stabile di Palermo","www.teatrobiondo.it","","Via Teatro Biondo, 11 - 90133 Palermo (PA)"))
+    enti_palermo.append(("Comune di Palermo","www.comune.palermo.it","","Piazza Pretoria, 1 - Palazzo Delle Aquile - 90133 Palermo (PA)"))
+    enti_torino.append(("Afc Torino S.P.A.","www.cimiteritorino.it","","Corso Peschiera, 193 - 10141 Torino (TO)"))
+    enti_torino.append(("Azienda Ospedaliera Ordine Mauriziano di Torino","www.mauriziano.it","","Via Magellano, 1 - 10128 Torino (TO)"))
+    enti_torino.append(("Biblioteca nazionale di Torino","http://www.bnto.librari.beniculturali.it/","","Piazza carlo Albeerto, 3 - 10123 Torino (TO)"))
+    enti_torino.append(("Collegio dei Geometri e Geometri Laureati di Torino e Provincia","https://collegiogeometri.to.it/","","Via Toselli 1 - 10129 Torino (TO)"))
+    enti_torino.append(("Turismo Torino e Provincia S.C.R.L","www.turismotorino.org","","Via Maria Vittoria, 19 - 10123 Torino (TO)"))
+    enti_torino.append(("Sede Torino Protocollo","http://www.comune.torino.it/circ1/cm/pages/ServeBLOB.php/L/IT/IDPagina/1592","","Via Pio VII, 9 - 10135 Torino (TO)"))
+    enti_torino.append(("RTS Torino","http://www.rgs.mef.gov.it/VERSIONE-I/sistema_delle_ragionerie/ragionerie_territoriali_dello_stato/sportelli_rts/piemonte/rts_torino_aosta/","","Corso Bolzano, 44 - 10121 Torino (TO)"))
+    enti_napoli.append(("Accademia Belle Arti di Napoli","www.accademiadinapoli.it","","Via Vincenzo Bellini, 36 - 80138 Napoli (NA)"))
+    enti_napoli.append(("Azienda Sanitaria Locale di Napoli 3 Sud","www.aslnapoli3sud.it","","Via Marconi 66 - 80059 Torre del Greco (NA)"))
+    enti_napoli.append(("Camera di Commercio, Industria, Artigianato e Agricoltura di Napoli","www.na.camcom.gov.it","","Via S. Aspreno 2 - 80133 Napoli (NA)"))
+    enti_napoli.append(("Citta Metropolitana di Napoli","www.cittametropolitana.na.it","","Piazza Matteotti, 1 - 80133 Napoli (NA)"))
+    enti_napoli.append(("Ente Provinciale per il Turismo di Napoli","www.eptnapoli.info","","CENTRO DIREZIONALE ISOLA C5 - 80121 Napoli (NA)"))
+    enti_napoli.append(("Istituto per le Tecnologie della Costruzione - ITC - Sede Secondaria Napoli","https://www.itc.cnr.it/home/chi-siamo/","","c/o Dist Federico II - via Claudio 21 - 80125 Napoli (NA)"))
+    enti_napoli.append(("Ordine degli Ingegneri della Provincia di Napoli","www.ordineingegnerinapoli.com","","Via Del Chiostro, 9 - 80134 Napoli (NA)"))
+    enti_napoli.append(("Sistema Ambiente Provincia di Napoli S.P.A.","www.sapnapoli.it","","Piazza Matteotti, 1 - 80133 Napoli (NA)"))
+    enti_napoli.append(("Ambito Territoriale Ottimale Napoli 3","www.atonapoli3.it","","Via Roma, 5 - 80032 Casamarciano (NA"))
+    enti_napoli.append(("Azienda Sanitaria Locale Napoli 2 Nord","www.aslnapoli2nord.it","","Via M. Lupoli,27 - 80027 Frattamaggiore (NA)"))
+    enti_milano.append(("Biblioteca Braidense di Milano","http://www.braidense.it/","","Via Brera, 28 - 20121 Milano (MI)"))
+    enti_milano.append(("Comune di Milano","www.comune.milano.it","","Piazza Della Scala, 2 - 20121 Milano (MI)"))
+    enti_milano.append(("Fondazione Teatro alla Scala di Milano","www.teatroallascala.org","","Via Filodrammatici 2 - 20121 Milano (MI)"))
+    enti_milano.append(("Milano Ristorazione","www.milanoristorazione.it","","Via Bernardo Quaranta, 41 - 20139 Milano (MI)"))
+    enti_milano.append(("Ordine Degli Avvocati di Milano","www.ordineavvocatimilano.it","","Via Carlo Freguglia, 1 - 20122 Milano (MI)"))
+    enti_milano.append(("Parco Nord Milano","www.parconord.milano.it","","Via Clerici, 150 - 20099 Sesto San Giovanni (MI)"))
+    enti_milano.append(("Ufficio Ambito della Citta Metropolitana di Milano - Azienda Speciale","www.atocittametropolitanadimilano.it","","Viale Piceno, 60 - 20129 Milano (MI)"))
+    sql = database_connection("bdm_unipa")
+    for ente in enti_palermo:
+        query = "INSERT INTO ente(nome, descrizione, livello, indirizzo) VALUES ("
+        for value in ente:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+    sql = database_connection("bdm_unimi")
+    for ente in enti_milano:
+        query = "INSERT INTO ente(nome, descrizione, livello, indirizzo) VALUES ("
+        for value in ente:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+    sql = database_connection("bdm_unina")
+    for ente in enti_napoli:
+        query = "INSERT INTO ente(nome, descrizione, livello, indirizzo) VALUES ("
+        for value in ente:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+    sql = database_connection("bdm_unito")
+    for ente in enti_torino:
+        query = "INSERT INTO ente(nome, descrizione, livello, indirizzo) VALUES ("
+        for value in ente:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+
+
+def creazione_fondo():
+    #nome, budget, data, ente
+    founds = pd.read_csv("../res/datasets/contributi_atenei.csv", sep=";")
+    fondi_palermo = list()
+    fondi_torino = list()
+    fondi_napoli = list()
+    fondi_milano = list()
+    #TORINO
+    sql = database_connection("bdm_unito")
+    enti_torino = sql.execute_query("SELECT id_ente, nome FROM ente")
+    enti_torino = list(enti_torino)
+    for i in range(0, 11):
+        fondi_torino.append((founds.iloc[i, 4], founds.iloc[i, 5], data_random(1990, 2020), enti_torino[np.random.randint(0, len(enti_torino))][0]))
+    for fondo in fondi_torino:
+        query = "INSERT INTO fondo(nome, budget, data, ente) VALUES ("
+        for value in fondo:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+    #MILANO
+    sql = database_connection("bdm_unimi")
+    enti_milano = sql.execute_query("SELECT id_ente, nome FROM ente")
+    enti_milano = list(enti_milano)
+    for i in range(0, 11):
+        fondi_milano.append((founds.iloc[11+i, 4], founds.iloc[11+i, 5], data_random(1990, 2020), enti_milano[np.random.randint(0, len(enti_milano))][0]))
+    for fondo in fondi_milano:
+        query = "INSERT INTO fondo(nome, budget, data, ente) VALUES ("
+        for value in fondo:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+    #NAPOLI
+    sql = database_connection("bdm_unina")
+    enti_napoli = sql.execute_query("SELECT id_ente, nome FROM ente")
+    enti_napoli = list(enti_napoli)
+    for i in range(0, 11):
+        fondi_napoli.append((founds.iloc[22+i, 4], founds.iloc[22+i, 5], data_random(1990, 2020), enti_napoli[np.random.randint(0, len(enti_napoli))][0]))
+    for fondo in fondi_napoli:
+        query = "INSERT INTO fondo(nome, budget, data, ente) VALUES ("
+        for value in fondo:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+    #PALERMO
+    sql = database_connection("bdm_unipa")
+    enti_palermo = sql.execute_query("SELECT id_ente, nome FROM ente")
+    enti_palermo = list(enti_palermo)
+    for i in range(0, 11):
+        fondi_palermo.append((founds.iloc[33+i, 4], founds.iloc[33+i, 5], data_random(1990, 2020), enti_palermo[np.random.randint(0, len(enti_palermo))][0]))
+    for fondo in fondi_palermo:
+        query = "INSERT INTO fondo(nome, budget, data, ente) VALUES ("
+        for value in fondo:
+            query += "'" + str(value) + "',"
+        sql.execute_query(query[:-1] + ")")
+
+#DAFARE
+def creazione_dipartimenti():
+    print("")
+
+
+#DAFARE
 def creazione_personale():
     names = pd.read_csv("../res/datasets/nomi.csv")
     surnames = pd.read_csv("../res/datasets/cognomi.csv")
     hospitals = pd.read_csv("../res/datasets/ospedali.csv")
-    #founds = pd.read_csv("../res/datasets/contributi_atenei.csv", sep=";")
     prefisso_telefono_unipa = "091 238 "
     prefisso_telefono_unito = "011 670 "
     prefisso_telefono_unina = "081 420 "
@@ -32,15 +165,7 @@ def creazione_personale():
     for i in range(0, 500):
         name = names.iloc[np.random.randint(0, 100), 0]
         surname = surnames.iloc[np.random.randint(0, 100), 0]
-        day = np.random.randint(1, 32)
-        month = np.random.randint(1, 13)
-        year = np.random.randint(1950, 1995)
-        start_date = datetime.date(1950, 1, 1)
-        end_date = datetime.date(1992, 12, 31)
-        time_between_dates = end_date - start_date
-        days_between_dates = time_between_dates.days
-        random_number_of_days = random.randrange(days_between_dates)
-        date = str(start_date + datetime.timedelta(days=random_number_of_days)).replace("-", "/")
+        date = data_random(1950, 1992)
         sex = ""
         if name[-1] == "A":
             sex = "F"
@@ -217,63 +342,4 @@ dipartimenti_unimi.append(("Dipartimento di Oncologia ed Emato-Oncologia","Via F
 dipartimenti_unimi.append(("Dipartimento di Scienze Biomediche e Cliniche L. Sacco","Via Giovanni Battista Grassi 74 20157 Milano", FONDO))
 dipartimenti_unimi.append(("Dipartimento di Scienze Biomediche per la Salute","Via Mangiagalli 31 20133 Milano", FONDO))
 dipartimenti_unimi.append(("Dipartimento di Scienze Biomediche, Chirurgiche ed Odontoiatriche","Via della Commenda 10 20122 Milano", FONDO))
-
-
-#GENERAZIONE ENTI
-#nome, descriizoni, livello, indirizzo, DA CHIEDERE COS'è IL LIVELLO AAAAAAAAAAAAAAAAAAH
-enti_palermo = list()
-enti_torino = list()
-enti_napoli = list()
-enti_milano = list()
-
-enti_palermo.append(("Azienda Sanitaria Provinciale di Palermo","","","Via Giacomo Gusmano, 24 - 90141 Palermo (PA)"))
-enti_palermo.append(("Consorzio Universitario della Provincia di Palermo","http://www.consunipa.it/wordpress/ente/mission/","","Via Maqueda 100 - 90100 Palermo (PA)" ))
-enti_palermo.append(("Consorzio Area Sviluppo Industriale Palermo","http://www.irsapsicilia.it/index.php?option=com_content&view=article&id=380&Itemid=684","","Via Enrico Ferruzza, 5 - 90124 Palermo (PA)"))
-enti_palermo.append(("Ersu Palermo","www.ersupalermo.it","","Viale Delle Scienze, Edificio 1 - 90128 Palermo (PA)"))
-enti_palermo.append(("Consiglio Nazionale delle Ricerche - CNR","www.cnr.it","","Piazzale Aldo Moro, 7 - 00185 Roma (RM)"))
-enti_palermo.append(("Ordine degli Ingegneri della Provincia di Palermo","www.ingpa.com","","Via Francesco Crispi, 120 - 90139 Palermo (PA)"))
-enti_palermo.append(("Ordine dei Farmacisti della Provincia di Palermo","www.ordinefarmacistipalermo.it","","Via Mariano Stabile N. 118/B - 90139 Palermo (PA)"))
-enti_palermo.append(("SISPI - SISTEMA PALERMO INNOVAZIONE S.P.A.","www.sispi.it","","Via A.s.denti Di Piraino, 7 - 90142 Palermo (PA)"))
-enti_palermo.append(("Teatro Biondo Stabile di Palermo","www.teatrobiondo.it","","Via Teatro Biondo, 11 - 90133 Palermo (PA)"))
-enti_palermo.append(("Comune di Palermo","www.comune.palermo.it","","Piazza Pretoria, 1 - Palazzo Delle Aquile - 90133 Palermo (PA)"))
-enti_torino.append(("Afc Torino S.P.A.","www.cimiteritorino.it","","Corso Peschiera, 193 - 10141 Torino (TO)"))
-enti_torino.append(("Azienda Ospedaliera Ordine Mauriziano di Torino","www.mauriziano.it","","Via Magellano, 1 - 10128 Torino (TO)"))
-enti_torino.append(("Biblioteca nazionale di Torino","http://www.bnto.librari.beniculturali.it/","","Piazza carlo Albeerto, 3 - 10123 Torino (TO)"))
-enti_torino.append(("Collegio dei Geometri e Geometri Laureati di Torino e Provincia","https://collegiogeometri.to.it/","","Via Toselli 1 - 10129 Torino (TO)"))
-enti_torino.append(("Turismo Torino e Provincia S.C.R.L","www.turismotorino.org","","Via Maria Vittoria, 19 - 10123 Torino (TO)"))
-enti_torino.append(("Sede Torino Protocollo","http://www.comune.torino.it/circ1/cm/pages/ServeBLOB.php/L/IT/IDPagina/1592","","Via Pio VII, 9 - 10135 Torino (TO)"))
-enti_torino.append(("RTS Torino","http://www.rgs.mef.gov.it/VERSIONE-I/sistema_delle_ragionerie/ragionerie_territoriali_dello_stato/sportelli_rts/piemonte/rts_torino_aosta/","","Corso Bolzano, 44 - 10121 Torino (TO)"))
-enti_napoli.append(("Accademia Belle Arti di Napoli","www.accademiadinapoli.it","","Via Vincenzo Bellini, 36 - 80138 Napoli (NA)"))
-enti_napoli.append(("Azienda Sanitaria Locale di Napoli 3 Sud","www.aslnapoli3sud.it","","Via Marconi 66 - 80059 Torre del Greco (NA)"))
-enti_napoli.append(("Camera di Commercio, Industria, Artigianato e Agricoltura di Napoli","www.na.camcom.gov.it","","Via S. Aspreno 2 - 80133 Napoli (NA)"))
-enti_napoli.append(("Citta' Metropolitana di Napoli","www.cittametropolitana.na.it","","Piazza Matteotti, 1 - 80133 Napoli (NA)"))
-enti_napoli.append(("Ente Provinciale per il Turismo di Napoli","www.eptnapoli.info","","CENTRO DIREZIONALE ISOLA C5 - 80121 Napoli (NA)"))
-enti_napoli.append(("Istituto per le Tecnologie della Costruzione - ITC - Sede Secondaria Napoli","https://www.itc.cnr.it/home/chi-siamo/","","c/o Dist Federico II - via Claudio 21 - 80125 Napoli (NA)"))
-enti_napoli.append(("Ordine degli Ingegneri della Provincia di Napoli","www.ordineingegnerinapoli.com","","Via Del Chiostro, 9 - 80134 Napoli (NA)"))
-enti_napoli.append(("Sistema Ambiente Provincia di Napoli S.P.A.","www.sapnapoli.it","","Piazza Matteotti, 1 - 80133 Napoli (NA)"))
-enti_napoli.append(("Ambito Territoriale Ottimale Napoli 3","www.atonapoli3.it","","Via Roma, 5 - 80032 Casamarciano (NA"))
-enti_napoli.append(("Azienda Sanitaria Locale Napoli 2 Nord","www.aslnapoli2nord.it","","Via M. Lupoli,27 - 80027 Frattamaggiore (NA)"))
-enti_milano.append(("Agenzia di Tutela della Salute della Citta' Metropolitana di Milano","www.ats-milano.it","","Corso Italia, 19 - 20122 Milano (MI)"))
-enti_milano.append(("Biblioteca Braidense di Milano","http://www.braidense.it/","","Via Brera, 28 - 20121 Milano (MI)"))
-enti_milano.append(("Citta' Metropolitana di Milano","www.cittametropolitana.mi.it","","Via Vivaio 1 - 20122 Milano (MI)"))
-enti_milano.append(("Comune di Milano","www.comune.milano.it","","Piazza Della Scala, 2 - 20121 Milano (MI)"))
-enti_milano.append(("Fondazione Teatro alla Scala di Milano","www.teatroallascala.org","","Via Filodrammatici 2 - 20121 Milano (MI)"))
-enti_milano.append(("Milano Ristorazione","www.milanoristorazione.it","","Via Bernardo Quaranta, 41 - 20139 Milano (MI)"))
-enti_milano.append(("Ordine Degli Avvocati di Milano","www.ordineavvocatimilano.it","","Via Carlo Freguglia, 1 - 20122 Milano (MI)"))
-enti_milano.append(("Parco Nord Milano","www.parconord.milano.it","","Via Clerici, 150 - 20099 Sesto San Giovanni (MI)"))
-enti_milano.append(("Ufficio d'Ambito della Citta' Metropolitana di Milano - Azienda Speciale","www.atocittametropolitanadimilano.it","","Viale Piceno, 60 - 20129 Milano (MI)"))
-
-
-# GENERAZIONE FONDI
-# nome budget ente
-fondi_palermo = list()
-fondi_torino = list()
-fondi_napoli = list()
-fondi_milano = list()
-
-for i in range(0,11):
-    fondi_torino.append((founds.iloc[i, 4], founds.iloc[i, 5]), 'ENTE')
-    fondi_milano.append((founds.iloc[11+i, 4], founds.iloc[11+i, 5]), 'ENTE')
-    fondi_napoli.append((founds.iloc[22+i, 4], founds.iloc[22+i, 5]), 'ENTE')
-    fondi_palermo.append((founds.iloc[33+i, 4], founds.iloc[33+i, 5]), 'ENTE')
 """
