@@ -10,7 +10,6 @@ connection = pymysql.connect(host='bdm.zandes.net',
 def execute_query(query):
     try:
         with connection.cursor() as sql:
-            # Read a single record
             sql.execute(query)
             result = sql.fetchall()
             if result is not None:
