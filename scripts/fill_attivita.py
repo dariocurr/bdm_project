@@ -3,9 +3,8 @@ from database_connection import database_connection
 import random
 
 
+# Attivita(id_attivita,nome,descrizione,dipartimento)
 def creazioni_attivita():
-    # PROVVISORIA
-
     attivita_unipa = list()
     attivita_unito = list()
     attivita_unimi = list()
@@ -46,7 +45,8 @@ def creazioni_attivita():
 
     facolta_scientifico_naturali_unito = ["Dipartimento di Chimica", "Dipartimento di Scienze Agrarie, Forestali e Alimentari", "Dipartimento di Scienze della Terra",
                                           "Dipartimento di Scienze della Vita e Biologia dei Sistemi", "Dipartimento Interateneo di Scienze, Progetto e Politiche del Territorio"]
-    facolta_scientifico_naturali_unipa = ["Scienze Agrarie, Alimentari e Forestali", "Scienze della Terra e del Mare"]
+    facolta_scientifico_naturali_unipa = [
+        "Scienze Agrarie, Alimentari e Forestali", "Scienze della Terra e del Mare"]
     facolta_scientifico_naturali_unimi = ["Dipartimento di Bioscienze", "Dipartimento di Biotecnologie Mediche e Medicina Traslazionale",
                                           "Dipartimento di Chimica", "Dipartimento di Scienze Agrarie e Ambientali - Produzione, Territorio, Agroenergia"]
     facolta_scientifico_naturali_unina = ["Dipartimento di Agraria", "Dipartimento di Biologia", "Dipartimento di Medicina Molecolare e Biotecnologie Mediche", "Dipartimento di Medicina Veterinaria e Produzioni Animali",
@@ -61,7 +61,7 @@ def creazioni_attivita():
         tmp = materie_scientifiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unipa.append([facolta, "", tmp[x]])
+            attivita_unipa.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # UNITO
@@ -69,7 +69,7 @@ def creazioni_attivita():
         tmp = materie_scientifiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unito.append([facolta, "", tmp[x]])
+            attivita_unito.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # UNIMI
@@ -77,7 +77,7 @@ def creazioni_attivita():
         tmp = materie_scientifiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unimi.append([facolta, "", tmp[x]])
+            attivita_unimi.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -86,7 +86,7 @@ def creazioni_attivita():
         tmp = materie_scientifiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unina.append([facolta, "", tmp[x]])
+            attivita_unina.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # ATTIVITA' PER I DIPARTIMENTI MEDICI
@@ -96,7 +96,7 @@ def creazioni_attivita():
         tmp = materie_mediche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unipa.append([facolta, "", tmp[x]])
+            attivita_unipa.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # UNITO
@@ -104,7 +104,7 @@ def creazioni_attivita():
         tmp = materie_mediche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unito.append([facolta, "", tmp[x]])
+            attivita_unito.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -113,7 +113,7 @@ def creazioni_attivita():
         tmp = materie_mediche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unimi.append([facolta, "", tmp[x]])
+            attivita_unimi.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -122,7 +122,7 @@ def creazioni_attivita():
         tmp = materie_mediche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unina.append([facolta, "", tmp[x]])
+            attivita_unina.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -133,7 +133,7 @@ def creazioni_attivita():
         tmp = materie_umanistiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unipa.append([facolta, "", tmp[x]])
+            attivita_unipa.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # UNITO
@@ -141,7 +141,7 @@ def creazioni_attivita():
         tmp = materie_umanistiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unito.append([facolta, "", tmp[x]])
+            attivita_unito.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -150,7 +150,7 @@ def creazioni_attivita():
         tmp = materie_umanistiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unimi.append([facolta, "", tmp[x]])
+            attivita_unimi.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -159,7 +159,7 @@ def creazioni_attivita():
         tmp = materie_umanistiche.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unina.append([facolta, "", tmp[x]])
+            attivita_unina.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # ATTIVITA' PER I DIPARTIMENTI SCIENTIFICO NATURALI
@@ -169,7 +169,7 @@ def creazioni_attivita():
         tmp = materie_scientifico_naturali.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unipa.append([facolta, "", tmp[x]])
+            attivita_unipa.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 # UNITO
@@ -177,7 +177,7 @@ def creazioni_attivita():
         tmp = materie_scientifico_naturali.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unito.append([facolta, "", tmp[x]])
+            attivita_unito.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -186,7 +186,7 @@ def creazioni_attivita():
         tmp = materie_scientifico_naturali.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unimi.append([facolta, "", tmp[x]])
+            attivita_unimi.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
 
 
@@ -195,7 +195,7 @@ def creazioni_attivita():
         tmp = materie_scientifico_naturali.copy()
         for i in range(0, 10):
             x = random.randint(0, len(tmp) - 1)
-            attivita_unina.append([facolta, "", tmp[x]])
+            attivita_unina.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
     print("UNIPA\n")
     print(attivita_unipa)
