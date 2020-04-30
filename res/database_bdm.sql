@@ -6,21 +6,21 @@ CREATE TABLE ente (
   indirizzo TEXT
 );
 
+CREATE TABLE dipartimento (
+  id_dipartimento INT PRIMARY KEY AUTO_INCREMENT,
+  nome TEXT NOT NULL,
+  indirizzo TEXT
+);
+
 CREATE TABLE fondo (
   id_fondo INT PRIMARY KEY AUTO_INCREMENT,
   nome TEXT NOT NULL,
   budget DECIMAL(15, 2),
   data DATE,
   ente INT,
-  FOREIGN KEY(ente) REFERENCES ente(id_ente)
-);
-
-CREATE TABLE dipartimento (
-  id_dipartimento INT PRIMARY KEY AUTO_INCREMENT,
-  nome TEXT NOT NULL,
-  indirizzo TEXT,
-  fondo INT,
-  FOREIGN KEY(fondo) REFERENCES fondo(id_fondo)
+  dipartimento INT,
+  FOREIGN KEY(ente) REFERENCES ente(id_ente),
+  FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
 );
 
 CREATE TABLE archivio_dipartimentale (
