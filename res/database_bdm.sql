@@ -104,7 +104,7 @@ CREATE TABLE progetto_ricerca (
 
 CREATE TABLE evento (
     id_evento INT PRIMARY KEY AUTO_INCREMENT,
-    titolo TEXT NOT NULL,
+    argomento TEXT NOT NULL,
     tipo TEXT,
     data DATE,
     durata TIME,

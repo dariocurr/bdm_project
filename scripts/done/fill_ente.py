@@ -64,3 +64,5 @@ def creazione_enti():
         for value in ente:
             query += "'" + str(value) + "',"
         sql.execute_query(query[:-1] + ")")
+
+creazione_enti()
