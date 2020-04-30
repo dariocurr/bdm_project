@@ -14,11 +14,39 @@ def data_random(anno_min, anno_max):
     random_number_of_days = random.randrange(days_between_dates)
     return str(start_date + datetime.timedelta(days=random_number_of_days)).replace("-", "/")
 
-#DAFARE
+
 def creazione_personale():
+    # codice fiscale, nome, cognome, data nascita, residenza, dipartimento
     names = pd.read_csv("../res/datasets/nomi.csv")
     surnames = pd.read_csv("../res/datasets/cognomi.csv")
     hospitals = pd.read_csv("../res/datasets/ospedali.csv")
+    cities = pd.read_csv("../res/datasets/comuni.csv", sep=";")
+    for db in ["bdm_unipa", "bdm_unina", "bdm_unito", "bdm_unimi"]:
+        sql = database_connection(db)
+        dipartimenti = list(sql.execute_query("SELECT id_dipartimento, nome FROM dipartimento"))
+        for i in range(0, 200):
+            name = names.iloc[np.random.randint(0, 100), 0]
+            name = name[0] + str(name[1:]).lower()
+            surname = surnames.iloc[np.random.randint(0, 100), 0]
+            surname = surname[0] + str(surname[1:]).lower()
+            date = data_random(1950, 1992)
+            sex = ""
+            if name[-1] == "A":
+                sex = "F"
+            else:
+                sex = "M"
+            city = hospitals.iloc[np.random.randint(0, len(hospitals)), 1]
+            if city.find("/") > 0:
+                city = city[:city.find("/")]
+            codice_fiscale = codicefiscale.encode(surname=surname, name=name, sex=sex, birthdate=date, birthplace=city)
+            city = cities.iloc[np.random.randint(0, len(cities)), 1]
+            person = (codice_fiscale, name, surname, date, city, dipartimenti[np.random.randint(0, len(dipartimenti))][0])
+            query = "INSERT INTO personale VALUES("
+            for value in person:
+                query += "'" + str(value) + "',"
+            sql.execute_query(query[:-1] + ")")
+
+    """
     prefisso_telefono_unipa = "091 238 "
     prefisso_telefono_unito = "011 670 "
     prefisso_telefono_unina = "081 420 "
@@ -38,19 +66,6 @@ def creazione_personale():
     tipologia_contratto_non_strutturato.append("Dottorando")
     tipologia_contratto_non_strutturato.append("Contrattista")
     #GENERAZIONE PERSONALE
-    for i in range(0, 500):
-        name = names.iloc[np.random.randint(0, 100), 0]
-        surname = surnames.iloc[np.random.randint(0, 100), 0]
-        date = data_random(1950, 1992)
-        sex = ""
-        if name[-1] == "A":
-            sex = "F"
-        else:
-            sex = "M"
-        city = hospitals.iloc[np.random.randint(0, len(hospitals)), 1]
-        if city.find("/") > 0:
-            city = city[:city.find("/")]
-        codice_fiscale = codicefiscale.encode(surname=surname, name=name, sex=sex, birthdate=date, birthplace=city)
         telefono = prefisso_telefono_unipa
         #telefono = prefisso_telefono_unito
         #telefono = prefisso_telefono_unina
@@ -127,3 +142,6 @@ def creazione_personale():
             #PERSONALE NON STRUTTURATO
             else:
                 laboratorio_riferimento = "Lab " + str(np.random.randint(1, 100))
+    """
+
+creazione_personale()
