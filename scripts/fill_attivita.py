@@ -51,7 +51,7 @@ def creazioni_attivita():
                                           "Dipartimento di Chimica", "Dipartimento di Scienze Agrarie e Ambientali - Produzione, Territorio, Agroenergia"]
     facolta_scientifico_naturali_unina = ["Dipartimento di Agraria", "Dipartimento di Biologia", "Dipartimento di Medicina Molecolare e Biotecnologie Mediche", "Dipartimento di Medicina Veterinaria e Produzioni Animali",
                                           "Dipartimento di Scienze Biomediche Avanzate", "Dipartimento di Scienze Chimiche", "Dipartimento di Scienze della Terra, dell Ambiente e delle Risorse", "Dipartimento di Scienze Mediche Traslazionali"]
-    materie_scientifico_naturali = ["fondamenti di chimica", "Fondamenti di amtematica e statistica", "botanica generale", "lingua inglese B1", "lingua inglese B2" "basi di fisica", "chimica organica", "microbiologia",
+    materie_scientifico_naturali = ["fondamenti di chimica", "Fondamenti di amtematica e statistica", "botanica generale", "lingua inglese B1", "lingua inglese B2", "basi di fisica", "chimica organica", "microbiologia",
                                     "biochimica", "biologia molecolare", "fisiologia vegetale", "biologia dello sviluppo", "ecologia generale ed applicata", "fisiologia generale", "citologia e istologia", "zoologia generale e sistematica"]
 
 # ATTIVITA' PER I DIPARTIMENTI SCIENTIFICI
@@ -197,6 +197,7 @@ def creazioni_attivita():
             x = random.randint(0, len(tmp) - 1)
             attivita_unina.append([tmp[x], "", facolta])
             tmp.remove(tmp[x])
+    """
     print("UNIPA\n")
     print(attivita_unipa)
     print("UNITO\n")
@@ -205,6 +206,38 @@ def creazioni_attivita():
     print(attivita_unimi)
     print("UNINA\n")
     print(attivita_unina)
+    """
+    sql = database_connection("bdm_unipa")
+    for attivita in attivita_unipa:
+        query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
+        for value in attivita:
+            query += "'" + str(value) + "',"
+        ##sql.execute_query(query[:-1] + ")")
+        print(query[:-1] + ")")
+
+    sql = database_connection("bdm_unito")
+    for attivita in attivita_unito:
+        query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
+        for value in attivita:
+            query += "'" + str(value) + "',"
+        ##sql.execute_query(query[:-1] + ")")
+        print(query[:-1] + ")")
+
+    sql = database_connection("bdm_unimi")
+    for attivita in attivita_unimi:
+        query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
+        for value in attivita:
+            query += "'" + str(value) + "',"
+        ##sql.execute_query(query[:-1] + ")")
+        print(query[:-1] + ")")
+
+    sql = database_connection("bdm_unina")
+    for attivita in attivita_unina:
+        query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
+        for value in attivita:
+            query += "'" + str(value) + "',"
+        ##sql.execute_query(query[:-1] + ")")
+        print(query[:-1] + ")")
 
 
 creazioni_attivita()
