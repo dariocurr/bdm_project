@@ -240,8 +240,8 @@ CREATE TABLE partecipa_2 (
 
 CREATE TABLE promozione (
   id_promozione INT PRIMARY KEY AUTO_INCREMENT,
-  data_inizio DATE,
-  data_fine DATE,
+  data_inizio YEAR,
+  data_fine YEAR,
   stipendio DECIMAL(15, 2),
   tipologia_contratto TEXT,
   personale_ricerca INT,
