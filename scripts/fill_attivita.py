@@ -207,36 +207,36 @@ def creazioni_attivita():
     print("UNINA\n")
     print(attivita_unina)
     """
-    sql = database_connection("bdm_unipa")
+    #sql = database_connection("bdm_unipa")
     for attivita in attivita_unipa:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        sql.execute_query(query[:-1] + ")")
-        #print(query[:-1] + ")")
+        #sql.execute_query(query[:-1] + ")")
+        print(query[:-1] + ")")
 
-    sql = database_connection("bdm_unito")
+    #sql = database_connection("bdm_unito")
     for attivita in attivita_unito:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        sql.execute_query(query[:-1] + ")")
+        #sql.execute_query(query[:-1] + ")")
         #print(query[:-1] + ")")
 
-    sql = database_connection("bdm_unimi")
+    #sql = database_connection("bdm_unimi")
     for attivita in attivita_unimi:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        sql.execute_query(query[:-1] + ")")
+        #sql.execute_query(query[:-1] + ")")
         #print(query[:-1] + ")")
 
-    sql = database_connection("bdm_unina")
+    #sql = database_connection("bdm_unina")
     for attivita in attivita_unina:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        sql.execute_query(query[:-1] + ")")
+        #sql.execute_query(query[:-1] + ")")
         #print(query[:-1] + ")")
 
 
