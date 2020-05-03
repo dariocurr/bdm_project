@@ -19,7 +19,7 @@ def creazioni_attivita():
     facolta_scientifiche_unina = ["Dipartimento di Architettura", "Dipartimento di Economia, Management, Istituzioni", "Dipartimento di Fisica \"Ettore Pancini\"", "Dipartimento di Ingegneria Chimica, dei Materiali e della Produzione Industriale",
                                   "Dipartimento di Ingegneria Civile, Edile e Ambientale", "Dipartimento di Ingegneria Elettrica e delle Tecnologie dell Informazione", "Dipartimento di Ingegneria Industriale", "Dipartimento di Matematica e Applicazioni \"Renato Caccioppoli\"", "Dipartimento di Scienze Economiche e Statistiche", "Dipartimento di Strutture per l Ingegneria e l Architettura"]
     materie_scientifiche = ["Analisi matematica I", "analisi matematica II", "basi di matematica", "Fisica I", "Fisica II", "Logica", "geometria", "algebra lineare", "basi di dati",
-                            "basi di informatica", "matematica generale", "termodinamica", "algoritmi", "geometria solida", "calcolo combinatorio", "Attività per l'inserimento nel mondo del lavoro", "programamzione", "calcolo numerico", "lingua inglese B1", "prova finale", "tirocinio", "lingua inglese B2"]
+                            "basi di informatica", "matematica generale", "termodinamica", "algoritmi", "geometria solida", "calcolo combinatorio", "Attività per l inserimento nel mondo del lavoro", "programamzione", "calcolo numerico", "lingua inglese B1", "prova finale", "tirocinio", "lingua inglese B2"]
 
     facolta_mediche_unito = ["Dipartimento di Biotecnologie Molecolari e Scienze per la Salute", "Dipartimento di Neuroscienze \"Rita Levi Montalcini\"", "Dipartimento di Oncologia", "Dipartimento di Scienza e Tecnologia del Farmaco",
                              "Dipartimento di Scienze Chirurgiche", "Dipartimento di Scienze Cliniche e Biologiche", "Dipartimento di Scienze della Sanità Pubblica e Pediatriche", "Dipartimento di Scienze Veterinarie", "Dipartimento di Scienze Mediche"]
@@ -41,7 +41,7 @@ def creazioni_attivita():
     facolta_umanistiche_unina = ["Dipartimento di Giurisprudenza", "Dipartimento di Scienze Politiche",
                                  "Dipartimento di Scienze Sociali", "Dipartimento di Studi Umanistici"]
     materie_umanistiche = ["Storia medievale", "Filosofia", "Letteratura", "Semiotica", "Editoria", "Linguistica", "storia contemporanea", "storia moderna", "antropologia culturale", "filologia romanza", "letteratura italiana",
-                           "storia delle tradizioni popolari", "lingua inglese B1", "lingua inglese B2", "filosofia morale", "filosofia teoretica", "storia del diritto", "storia dell'arte medievale", "storia dell'arte moderna", "storia romana", "storia greca"]
+                           "storia delle tradizioni popolari", "lingua inglese B1", "lingua inglese B2", "filosofia morale", "filosofia teoretica", "storia del diritto", "storia dell arte medievale", "storia dell arte moderna", "storia romana", "storia greca"]
 
     facolta_scientifico_naturali_unito = ["Dipartimento di Chimica", "Dipartimento di Scienze Agrarie, Forestali e Alimentari", "Dipartimento di Scienze della Terra",
                                           "Dipartimento di Scienze della Vita e Biologia dei Sistemi", "Dipartimento Interateneo di Scienze, Progetto e Politiche del Territorio"]
@@ -212,32 +212,32 @@ def creazioni_attivita():
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        ##sql.execute_query(query[:-1] + ")")
-        print(query[:-1] + ")")
+        sql.execute_query(query[:-1] + ")")
+        #print(query[:-1] + ")")
 
     sql = database_connection("bdm_unito")
     for attivita in attivita_unito:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        ##sql.execute_query(query[:-1] + ")")
-        print(query[:-1] + ")")
+        sql.execute_query(query[:-1] + ")")
+        #print(query[:-1] + ")")
 
     sql = database_connection("bdm_unimi")
     for attivita in attivita_unimi:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        ##sql.execute_query(query[:-1] + ")")
-        print(query[:-1] + ")")
+        sql.execute_query(query[:-1] + ")")
+        #print(query[:-1] + ")")
 
     sql = database_connection("bdm_unina")
     for attivita in attivita_unina:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
-        ##sql.execute_query(query[:-1] + ")")
-        print(query[:-1] + ")")
+        sql.execute_query(query[:-1] + ")")
+        #print(query[:-1] + ")")
 
 
 creazioni_attivita()
