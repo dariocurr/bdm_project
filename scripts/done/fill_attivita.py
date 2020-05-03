@@ -206,14 +206,14 @@ def creazioni_attivita():
     print(attivita_unimi)
     print("UNINA\n")
     print(attivita_unina)
-    """
-    #sql = database_connection("bdm_unipa")
+    
+    sql = database_connection("bdm_unipa")
     for attivita in attivita_unipa:
         query = "INSERT INTO attivita_didattica(nome,descrizione,facoltà) VALUES("
         for value in attivita:
             query += "'" + str(value) + "',"
         #sql.execute_query(query[:-1] + ")")
-        print(query[:-1] + ")")
+        #print(query[:-1] + ")")
 
     #sql = database_connection("bdm_unito")
     for attivita in attivita_unito:
@@ -239,5 +239,5 @@ def creazioni_attivita():
         #sql.execute_query(query[:-1] + ")")
         #print(query[:-1] + ")")
 
-
+"""
 creazioni_attivita()
