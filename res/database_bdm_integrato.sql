@@ -191,6 +191,15 @@ CREATE TABLE retribuisce (
   FOREIGN KEY(personale_non_strutturato) REFERENCES personale_non_strutturato(id_personale_non_strutturato)
 );
 
+CREATE TABLE finanzia_1 (
+  personale_strutturato INT,
+  evento INT,
+  descrizione_voce TEXT,
+  importo DECIMAL(15, 2),
+  FOREIGN KEY(personale_strutturato) REFERENCES personale_strutturato(id_personale_strutturato),
+  FOREIGN KEY(evento) REFERENCES evento(id_evento)
+);
+
 CREATE TABLE finanzia_3 (
   voce_spesa INT,
   progetto_ricerca INT,
