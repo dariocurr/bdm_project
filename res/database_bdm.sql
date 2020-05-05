@@ -206,7 +206,7 @@ CREATE TABLE dirige (
 );
 
 CREATE TABLE mantiene (
-  progetto_ricerca INT,
+  personale_ricerca INT,
   attivita_didattica INT,
   ruolo VARCHAR(30),
   anno_accademico VARCHAR(9),
