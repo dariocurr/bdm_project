@@ -13,7 +13,6 @@ def data_random(anno_min, anno_max):
     return str(start_date + datetime.timedelta(days=random_number_of_days)).replace("-", "/")
 
 
-# ha bisogno di dipartimento ed i nomi che prendiamo dai file sono senza senso
 def creazione_fondo():
     # nome, budget, data, ente, dipartimento
     for db in ["bdm_unipa", "bdm_unina", "bdm_unito", "bdm_unimi"]:
