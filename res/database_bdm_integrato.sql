@@ -31,11 +31,6 @@ CREATE TABLE fondo (
   FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
 );
 
-CREATE TABLE archivio_dipartimentale (
-  id_archivio_dipartimentale INT PRIMARY KEY AUTO_INCREMENT,
-  dipartimento INT,
-  FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
-);
 
 CREATE TABLE personale (
     cf CHAR(16) PRIMARY KEY,
@@ -101,7 +96,7 @@ CREATE TABLE pubblicazione (
 
 CREATE TABLE progetto_ricerca (
   id_progetto INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(30) NOT NULL,
+  nome TEXT NOT NULL,
   descrizione TEXT,
   data_avvio DATE,
   data_fine DATE,
@@ -122,9 +117,9 @@ CREATE TABLE evento (
     partitecipanti_effettivi INT,
     ricavo DECIMAL(15, 2),
     progetto_ricerca INT,
-    archivio_dipartimentale INT,
+    dipartimento INT,
     FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
-    FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale)
+    FOREIGN KEY(dipartimento) REFERENCES dipartimento(dipartimento)
 );
 
 CREATE TABLE attivita_didattica (
@@ -258,15 +253,15 @@ CREATE TABLE promozione (
 );
 
 CREATE TABLE contiene_1 (
-  archivio_dipartimentale INT,
+  dipartimento INT,
   pubblicazione INT,
-  FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale),
+  FOREIGN KEY(dipartimento) REFERENCES dipartimento(dipartimento),
   FOREIGN KEY(pubblicazione) REFERENCES pubblicazione(id_pubblicazione)
 );
 
 CREATE TABLE contiene_3 (
-  archivio_dipartimentale INT,
+  dipartimento INT,
   progetto_ricerca INT,
-  FOREIGN KEY(archivio_dipartimentale) REFERENCES archivio_dipartimentale(id_archivio_dipartimentale),
+  FOREIGN KEY(dipartimento) REFERENCES dipartimento(dipartimento),
   FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );
