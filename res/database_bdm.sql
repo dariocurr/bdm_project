@@ -93,7 +93,7 @@ CREATE TABLE pubblicazione (
 
 CREATE TABLE progetto_ricerca (
   id_progetto INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(30) NOT NULL,
+  nome TEXT NOT NULL,
   descrizione TEXT,
   data_avvio DATE,
   data_fine DATE,
