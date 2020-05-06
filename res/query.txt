@@ -28,7 +28,7 @@ Query:
 Fatti:
   - Organizza: 3, 13
   - Evento: 4, 5, 10, 11
-  - Voce spesa: 2, 6, 16, 18, 21, 22
+  - Voce spesa: 2, 6, 18, 21, 22
   - Pubblica: 7, 8
   - Promozione: 9, 23
   Partecipa_2: 1
@@ -38,6 +38,7 @@ Fatti:
   Mantiene: 20
   Personale TA: 24
   Finanzia_1: 17
+  Voce fondo: 16
 
 
 Sono stati creati gli alberi solo dei fatti contrassegnati con '*'.
