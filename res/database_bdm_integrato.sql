@@ -119,7 +119,7 @@ CREATE TABLE evento (
     progetto_ricerca INT,
     dipartimento INT,
     FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto),
-    FOREIGN KEY(dipartimento) REFERENCES dipartimento(dipartimento)
+    FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
 );
 
 CREATE TABLE attivita_didattica (
@@ -255,13 +255,13 @@ CREATE TABLE promozione (
 CREATE TABLE contiene_1 (
   dipartimento INT,
   pubblicazione INT,
-  FOREIGN KEY(dipartimento) REFERENCES dipartimento(dipartimento),
+  FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento),
   FOREIGN KEY(pubblicazione) REFERENCES pubblicazione(id_pubblicazione)
 );
 
 CREATE TABLE contiene_3 (
   dipartimento INT,
   progetto_ricerca INT,
-  FOREIGN KEY(dipartimento) REFERENCES dipartimento(dipartimento),
+  FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento),
   FOREIGN KEY(progetto_ricerca) REFERENCES progetto_ricerca(id_progetto)
 );
