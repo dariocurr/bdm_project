@@ -221,7 +221,6 @@ CREATE TABLE mantiene (
 CREATE TABLE pubblica (
   pubblicazione INT,
   personale_ricerca INT,
-  ordine TEXT,
   FOREIGN KEY(pubblicazione) REFERENCES pubblicazione(id_pubblicazione),
   FOREIGN KEY(personale_ricerca) REFERENCES personale_ricerca(id_personale_ricerca)
 );
