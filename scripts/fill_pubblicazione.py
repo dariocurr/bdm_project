@@ -2,7 +2,7 @@ from database_connection import database_connection
 import datetime
 import random
 
-sql = database_connection("bdm_unito") #bdm_unipa, bdm_unimi, bdm_unina
+sql = database_connection("bdm_unimi") #bdm_unipa, bdm_unimi, bdm_unina
 pubblicazioni = dict()
 
 
@@ -23,7 +23,6 @@ def get_random_area_ricerca():
 
 def crea_riviste():
     global pubblicazioni
-    sql = database_connection("bdm_unito") #bdm_unipa, bdm_unimi, bdm_unina
     result = sql.execute_query("select * from area_ricerca")
 
     for row in result:
@@ -62,19 +61,24 @@ def crea_riviste():
     pubblicazioni['Turismo'].append("Turistica Italian Journal of Tourism")
     pubblicazioni['Turismo'].append("Meridiani")
 
+    pubblicazioni['Economia'].append("ZEW – Leibniz Centre for European Economic Research")
+    pubblicazioni['Economia'].append("WEF - World Economic Forum")
+
     pubblicazioni['Informatica'].append("Communications of the ACM")
     pubblicazioni['Informatica'].append("International Journal of Computer Vision")
 
 
 def get_random_rivista(name):
-    index = random.randrange(2)
+    index = random.randint(0,1)
+    # print(name+" "+str(index))
     return pubblicazioni[name][index]
 
 
 def creazione_pubblicazioni():
     # V titolo, V data_pubblicazione, nome_rivista, V tipologia, V id_area_ricerca, V indice_qualità
     crea_riviste()
-    for i in range(0, 20):
+    ran = random.randint(7000,14000)
+    for i in range(0, ran):
         area = get_random_area_ricerca()
         pubblicazione = ("Ricerca #"+str(i)+" in "+area[1],
                         data_random(1970, 2020),
@@ -86,7 +90,8 @@ def creazione_pubblicazioni():
         query = "INSERT INTO pubblicazione(titolo,data_pubblicazione,nome_rivista,tipologia,id_area_ricerca,indice_qualita) VALUES ("
         for value in pubblicazione:
             query += "'" + str(value) + "',"
-        print(query)
+        sql.execute_query(query[:-1] + ")")
+
 
 
 creazione_pubblicazioni()
