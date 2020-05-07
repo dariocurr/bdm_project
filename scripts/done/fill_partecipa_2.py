@@ -13,7 +13,7 @@ def create_partecipa_2():
         print("Università: {}".format(uni))
         id_progetto = list(sql.execute_query("SELECT id_progetto FROM progetto_ricerca WHERE 1"))
         personale_ricerca = list(sql.execute_query("SELECT id_personale_ricerca, tipologia_contratto FROM personale_ricerca WHERE 1"))
-        ruolo = ["x", "y", "z"]
+        ruolo = ["tecnico progetto", "assistente", "dirigente"]
         for id in id_progetto:
             id = str(id)[1:].replace(",", "")
             id = id.replace(")", "").strip()
