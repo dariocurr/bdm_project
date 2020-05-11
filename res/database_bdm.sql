@@ -156,9 +156,9 @@ CREATE TABLE organizza (
 );
 
 CREATE TABLE collabora_1 (
-  personale CHAR(16),
+  personale INT,
   evento INT,
-  FOREIGN KEY(personale) REFERENCES personale(cf),
+  FOREIGN KEY(personale) REFERENCES personale_ricerca(id_personale_ricerca),
   FOREIGN KEY(evento) REFERENCES evento(id_evento)
 );
 

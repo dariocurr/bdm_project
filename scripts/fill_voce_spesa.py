@@ -19,7 +19,7 @@ def creazione_voce_spesa():
                 eventi.append(voce)
             elif voce[1] == "progetti e ricerca":
                 progetti_ricerca.append(voce)
-            elif voce[1] == "personales":
+            elif voce[1] == "personale":
                 personale.append(voce)
 
 
