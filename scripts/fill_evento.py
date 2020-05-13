@@ -7,7 +7,7 @@ import re
 
 fake = Faker('it_IT')
 
-sql = database_connection("bdm_unipa") #bdm_unipa, bdm_unimi, bdm_unina
+sql = database_connection("bdm_unito") #bdm_unipa, bdm_unimi, bdm_unina
 progetti = sql.execute_query("select * from progetto_ricerca")
 aree = sql.execute_query("select * from area_ricerca")
 dipartimenti = sql.execute_query("select id_dipartimento, nome  from dipartimento")
@@ -23,94 +23,180 @@ tipo.append("Summer school")
 argomenti = dict()
 
 def crea_argomenti_dipartimenti():
-    argomenti['Scienze Umanistiche'] = ["Teologia", "Storia", "Storia delle religioni",
+    argomenti['Dipartimento di Lingue e Letterature straniere e Culture moderne'] = ["Teologia", "Storia", "Storia delle religioni",
     "Beni culturali", "Linguistica", "Lingue e letterature classiche", "Discipline dell'arte, musica e spettacolo",
     "Archeologia", "Filosofia", "Storia delle lettere italiane"]
-    argomenti['Scienze Psicologiche, Pedagogiche, dell’Esercizio Fisico e della Formazione'] = ["Percezione",
+
+    argomenti['Dipartimento di Filosofia e Scienze dell’Educazione'] = ["Teologia", "Storia", "Storia delle religioni",
+    "Beni culturali", "Linguistica inglese", "Lingue e letterature spagnole", "Discipline dell'arte, musica e spettacolo",
+    "Archeologia", "Filosofia", "Storia delle lettere inglesi"]
+
+    argomenti['Dipartimento di Psicologia'] = ["Percezione",
     "Attenzione","Intelligenza","Memoria","Pensiero","Coscienza","Emozione","Personalità",
     "Conoscere la psiche","Ontologia newtoniana"]
-    argomenti['Scienze Politiche e delle relazioni internazionali'] = ["discipline giuspubblicistiche",
+
+    argomenti['Dipartimento di Studi Storici'] = ["discipline giuspubblicistiche",
     "economia politica e politica economica","scienza delle finanze e contabilità pubblica",
     "sociologia e metodologia della ricerca sociale","storia delle dottrine politiche","storia delle istituzioni politiche",
     "filosofia politica e altre branche della filosofia","statistica e demografia","scienza politica","relazioni internazionali"]
-    argomenti['Scienze Economiche, Aziendali e Statistiche'] = ["Tecnologia dei cicli produttivi","Storia del pensiero economico",
+
+    argomenti['Dipartimento di Culture, Politica e Societa'] = ["discipline giuspubblicistiche",
+    "economia politica e politica economica","scienza delle finanze e contabilità pubblica",
+    "sociologia e metodologia della ricerca sociale","storia delle dottrine politiche","storia delle istituzioni politiche",
+    "filosofia politica e altre branche della filosofia","statistica e demografia","scienza politica","relazioni internazionali"]
+
+    argomenti['Dipartimento di Scienze economico-sociali e matematico-statistiche'] = ["Tecnologia dei cicli produttivi","Storia del pensiero economico",
     "Management della sostenibilità e dell'innovazione","Revisione aziendale","Economia e Finanza Internazionale",
     "Diritto commerciale - mercati globali","Economia e gestione delle imprese internazionali","Corporate Finance",
     "Filosofia della scienza, economia e digitalizzazione","Teoria delle reti e delle decisioni"]
-    argomenti['Scienze Agrarie, Alimentari e Forestali'] = ["agronomia", "estimo", "diritto agrario",
+
+    argomenti['Dipartimento di Economia e Statistica Cognetti de Martiis'] = ["Tecnologia dei cicli produttivi","Storia del pensiero economico",
+    "Management della sostenibilità e dell'innovazione","Revisione aziendale","Economia e Finanza Internazionale",
+    "Diritto commerciale - mercati globali","Economia e gestione delle imprese internazionali","Corporate Finance",
+    "Filosofia della scienza, economia e digitalizzazione","Teoria delle reti e delle decisioni"]
+
+    argomenti['Dipartimento di Management'] = ["Tecnologia dei cicli produttivi","Storia del pensiero economico",
+    "Management della sostenibilità e dell'innovazione","Revisione aziendale","Economia e Finanza Internazionale",
+    "Diritto commerciale - mercati globali","Economia e gestione delle imprese internazionali","Corporate Finance",
+    "Filosofia della scienza, economia e digitalizzazione","Teoria delle reti e delle decisioni"]
+
+    argomenti['Dipartimento di Scienze Agrarie, Forestali e Alimentari'] = ["agronomia", "estimo", "diritto agrario",
     "costruzioni", "idraulica", "tecnologie alimentari", "industrie agrarie", "zootecnica", "zoologia",
     "nutrizione", "entomologia"]
-    argomenti['Scienze della Terra e del Mare'] = ["Tafonomia","Evoluzione e paleontologia",
+
+    argomenti['Dipartimento di Scienze della Terra'] = ["Tafonomia","Evoluzione e paleontologia",
     "Stratigrafia e biostratigrafia","Faune insulari","Sistematica di gruppi animali",
     "Degradazione meteorica delle rocce","Azione erosiva delle acque superficiali","Processi di versante",
     "Dinamica fluviale","Dinamica costiera"]
-    argomenti['Matematica e Informatica'] = ["Gruppi nilpotenti finiti","Gruppi abeliani finitamente generati",
+
+    argomenti['Dipartimento di Scienze della Vita e Biologia dei Sistemi'] = ["Tafonomia","Evoluzione e paleontologia",
+    "Stratigrafia e biostratigrafia","Faune insulari","Sistematica di gruppi animali",
+    "Degradazione meteorica delle rocce","Azione erosiva delle acque superficiali","Processi di versante",
+    "Dinamica fluviale","Dinamica costiera"]
+
+    argomenti['Dipartimento di Informatica'] = ["Gruppi nilpotenti finiti","Gruppi abeliani finitamente generati",
     "Curve razionali. Teorema di Luroth","Teorema fondamentale della Geometria proiettiva","Le geometrie non euclidee di tipo ellittico: proprietà e modelli",
     "Equazioni di terzo grado e trisezione dell’angolo: metodologie e costruzioni","Data mining","Algoritmi efficienti su grafi","Cybersecurity","Smart cities"]
-    argomenti['Ingegneria'] = ["Azionamento elettrico","Compatibilità elettromagnetica","Distribuzione di energia elettrica",
+
+    argomenti['Dipartimento di Matematica "Giuseppe Peano"'] = ["Gruppi nilpotenti finiti","Gruppi abeliani finitamente generati",
+    "Curve razionali. Teorema di Luroth","Teorema fondamentale della Geometria proiettiva","Le geometrie non euclidee di tipo ellittico: proprietà e modelli",
+    "Equazioni di terzo grado e trisezione dell’angolo: metodologie e costruzioni","Data mining","Algoritmi efficienti su grafi","Cybersecurity","Smart cities"]
+
+    argomenti['Dipartimento di Ingegneria Chimica, dei Materiali e della Produzione Industriale'] = ["Azionamento elettrico","Compatibilità elettromagnetica","Distribuzione di energia elettrica",
     "Macchine elettriche","Misure elettriche","Produzione di energia elettrica","Trasporto di energia elettrica","Load flow","Elettronica di potenza",
     "Circuiti integrati"]
-    argomenti['Giurisprudenza'] = ["Diritto costituzionale","filosofia del diritto","Inglese giuridico",
+
+    argomenti['Dipartimento di Ingegneria Civile, Edile e Ambientale'] = ["Azionamento elettrico","Compatibilità elettromagnetica","Distribuzione di energia elettrica",
+    "Macchine elettriche","Misure elettriche","Produzione di energia elettrica","Trasporto di energia elettrica","Load flow","Elettronica di potenza",
+    "Circuiti integrati"]
+
+    argomenti['Dipartimento di Ingegneria Elettrica e delle Tecnologie dell Informazione'] = ["Azionamento elettrico","Compatibilità elettromagnetica","Distribuzione di energia elettrica",
+    "Macchine elettriche","Misure elettriche","Produzione di energia elettrica","Trasporto di energia elettrica","Load flow","Elettronica di potenza",
+    "Circuiti integrati"]
+
+    argomenti['Dipartimento di Ingegneria Industriale'] = ["Azionamento elettrico","Compatibilità elettromagnetica","Distribuzione di energia elettrica",
+    "Macchine elettriche","Misure elettriche","Produzione di energia elettrica","Trasporto di energia elettrica","Load flow","Elettronica di potenza",
+    "Circuiti integrati"]
+
+    argomenti['Dipartimento di Giurisprudenza'] = ["Diritto costituzionale","filosofia del diritto","Inglese giuridico",
     "Diritto romano","diritto costituzionale","filosofia del diritto","Diritto agrario","Diritto commerciale",
     "Diritto del lavoro","Diritto dell'economia"]
-    argomenti['Architettura'] = ["supporto tecnologico e materiali per il restauro","applicazione di nanotecnologie ai beni culturali",
+
+    argomenti['Dipartimento di Diritto Privato e Storia del Diritto'] = ["Diritto costituzionale","filosofia del diritto","Inglese giuridico",
+    "Diritto romano","diritto costituzionale","filosofia del diritto","Diritto agrario","Diritto commerciale",
+    "Diritto del lavoro","Diritto dell'economia"]
+
+    argomenti['Dipartimento di Architettura'] = ["supporto tecnologico e materiali per il restauro","applicazione di nanotecnologie ai beni culturali",
     "strategie di sviluppo in ambito mediterraneo","strategie per la competitività dei sistemi produttivi",
     "teoria e metodi del progetto di architettura, città e paesaggio","strategie e forme delle modificazioni urbane",
     "accessibilità e mobilità: nuovi spazi pubblici e infrastrutture","strategie e sistemi di paesaggio",
     "sperimentazioni progettuali sulla città: aree dismesse e di margine","processi innovativi di trasformazione degli spazi pubblici urbani, attraverso tecniche digitali",
-    "exibit e installazioni nella città contemporanea",]
-    argomenti['Culture e Società'] = ["Cinema e media","Semiotica","Sociologia del giornalismo",
+    "exibit e installazioni nella città contemporanea"]
+
+    argomenti['Dipartimento di Strutture per l Ingegneria e l Architettura'] = ["supporto tecnologico e materiali per il restauro","applicazione di nanotecnologie ai beni culturali",
+    "strategie di sviluppo in ambito mediterraneo","strategie per la competitività dei sistemi produttivi",
+    "teoria e metodi del progetto di architettura, città e paesaggio","strategie e forme delle modificazioni urbane",
+    "accessibilità e mobilità: nuovi spazi pubblici e infrastrutture","strategie e sistemi di paesaggio",
+    "sperimentazioni progettuali sulla città: aree dismesse e di margine","processi innovativi di trasformazione degli spazi pubblici urbani, attraverso tecniche digitali",
+    "exibit e installazioni nella città contemporanea"]
+
+    argomenti['Dipartimento di Beni Culturali e Ambientali'] = ["Cinema e media","Semiotica","Sociologia del giornalismo",
     "Storia dell'arte","Filosofia sociale","Sociologia dei media digitali","Sociologia dell'amministrazione",
     "Statistica sociale","Marketing","Comunicazione"]
-    argomenti['Fisica e Chimica - Emilio Segrè'] = ["Anatomia e istologia apparato oculare",
+
+    argomenti['Dipartimento di Fisica'] = ["Anatomia e istologia apparato oculare",
     "Informatica","Ottica Geometrica","Chimica inorganica","chimica supramolecolare",
     "Sostanze naturali","Fisica statistica","Meccanica quantistica","Spettroscopia","Radiazioni"]
-    argomenti['Biomedicina, Neuroscienze e Diagnostica avanzata'] = ["Metodologie proteomiche","Epigenetica",
+
+    argomenti['Dipartimento di Chimica'] = ["Anatomia e istologia apparato oculare",
+    "Informatica","Ottica Geometrica","Chimica inorganica","chimica supramolecolare",
+    "Sostanze naturali","Fisica statistica","Meccanica quantistica","Spettroscopia","Radiazioni"]
+
+    argomenti['Dipartimento di Scienze Cliniche e Biologiche'] = ["Metodologie proteomiche","Epigenetica",
     "Neurobiologia molecolare","Immunologia","Fisiologia","Patologia","Anatomia","Psichiatria",
     "Riabilitazione Psichiatrica","Medicina legale"]
-    argomenti['Scienze e Tecnologie Biologiche Chimiche e Farmaceutiche'] = ["Chimica generale","Chimica inorganica","Biologia animale","Biochimica",
+
+    argomenti['Dipartimento di Neuroscienze "Rita Levi Montalcini"'] = ["Metodologie proteomiche","Epigenetica",
+    "Neurobiologia molecolare","Immunologia","Fisiologia","Patologia","Anatomia","Psichiatria",
+    "Riabilitazione Psichiatrica","Medicina legale"]
+
+    argomenti['Dipartimento di Scienza e Tecnologia del Farmaco'] = ["Chimica generale","Chimica inorganica","Biologia animale","Biochimica",
     "Sicurezza nei laboratori","Chimica analitica","Dinamica molecolare",
     "Igiene","Chimica analitica","Scienze dell'alimentazione"]
-    argomenti['Promozione della Salute, Materno-Infantile, di Medicina Interna e Specialistica di Eccellenza “G. D’Alessandro”'] =  ["Istologia",
+
+    argomenti['Dipartimento di Scienze Chirurgiche'] = ["Chimica generale","Chimica inorganica","Biologia animale","Biochimica",
+    "Sicurezza nei laboratori","Chimica analitica","Dinamica molecolare",
+    "Igiene","Chimica analitica","Scienze dell'alimentazione"]
+
+    argomenti['Dipartimento di Biotecnologie Molecolari e Scienze per la Salute'] =  ["Istologia",
     "Psicologia clinica","Assistenza al parto","Ginecologia","Dermatologia","Scienze biomediche",
     "Produzione degli alimenti","Scienze dietetiche","Infermieristica","Neurologia"]
-    argomenti['Discipline Chirurgiche, Oncologiche e Stomatologiche'] = ["Radioterapia",
+
+    argomenti['Dipartimento di Scienze Veterinarie'] = ["Radioterapia",
     "Istologia","Malattie dei tessuti dentali","Paradontologia","Biochimica","Anatomia","Igiene",
     "Farmacologia","Gastroenterologia","Malattie infettive"]
 
+    argomenti['Dipartimento di Oncologia'] = ["Radioterapia",
+    "Istologia","Malattie dei tessuti dentali","Paradontologia","Biochimica","Anatomia","Igiene",
+    "Farmacologia","Gastroenterologia","Malattie infettive"]
+
+    argomenti['Dipartimento di Scienze della Sanità Pubblica e Pediatriche'] = ["Radioterapia",
+    "Istologia","Malattie dei tessuti dentali","Paradontologia","Biochimica","Anatomia","Igiene",
+    "Farmacologia","Gastroenterologia","Malattie infettive"]
+
+    argomenti['Dipartimento di Scienze Mediche'] = ["Istologia",
+    "Psicologia clinica","Assistenza al parto","Ginecologia","Dermatologia","Scienze biomediche",
+    "Produzione degli alimenti","Scienze dietetiche","Infermieristica","Neurologia"]
+
 
 def area_from_dipartimento(name):
-    if name == 'Scienze Umanistiche' or name == 'Scienze Psicologiche, Pedagogiche, dell’Esercizio Fisico e della Formazione' or name == 'Scienze Politiche e delle relazioni internazionali' or name == 'Giurisprudenza' or name == 'Promozione della Salute, Materno-Infantile, di Medicina Interna e Specialistica di Eccellenza “G. D’Alessandro”':
+    if name == 'Dipartimento di Psicologia' or name == 'Dipartimento di Culture, Politica e Societa' or name == 'Dipartimento di Lingue e Letterature straniere e Culture moderne' or name == 'Dipartimento di Filosofia e Scienze dell’Educazione' or name == 'Dipartimento di Studi Storici' or name == 'Dipartimento di Giurisprudenza' or name == 'Dipartimento di Diritto Privato e Storia del Diritto':
         return 11
-    elif name == 'Scienze Economiche, Aziendali e Statistiche':
+    elif name == 'Dipartimento di Management' or name == 'Dipartimento di Economia e Statistica Cognetti de Martiis' or name == 'Dipartimento di Scienze economico-sociali e matematico-statistiche':
         return 10
-    elif name == 'Scienze Agrarie, Alimentari e Forestali':
+    elif name == 'Dipartimento di Scienze Agrarie, Forestali e Alimentari' or name == 'Dipartimento di Scienze Cliniche e Biologiche':
         return 1
-    elif name == 'Scienze della Terra e del Mare':
+    elif name == 'Dipartimento di Scienze della Terra' or name == 'Dipartimento di Scienze della Vita e Biologia dei Sistemi':
         return 12
-    elif name == 'Matematica e Informatica':
+    elif name == 'Dipartimento di Matematica "Giuseppe Peano"':
+        return 4
+    elif name == 'Dipartimento di Informatica':
         r = random.randint(0,1)
         if r == 0:
-            return 4
-        else:
             return 14
-    elif name == 'Ingegneria':
-        return 7
-    elif name == 'Culture e Società':
-        return 13
-    elif name == 'Architettura':
-        return 9
-    elif name == 'Fisica e Chimica - Emilio Segrè':
-        r = random.randint(0,1)
-        if r == 0:
-            return 5
         else:
-            return 6
-    elif name == 'Biomedicina, Neuroscienze e Diagnostica avanzata':
-        return 2
-    elif name == 'Scienze e Tecnologie Biologiche Chimiche e Farmaceutiche':
+            return 2
+    elif name == 'Dipartimento di Ingegneria Chimica, dei Materiali e della Produzione Industriale' or name == 'Dipartimento di Ingegneria Elettrica e delle Tecnologie dell Informazione' or name == 'Dipartimento di Ingegneria Industriale' or name == 'Dipartimento di Ingegneria Civile, Edile e Ambientale':
+        return 7
+    elif name == 'Scienze Politiche e delle relazioni internazionali':
+        return 13
+    elif name == 'Dipartimento di Beni Culturali e Ambientali' or name == 'Dipartimento di Architettura':
+        return 9
+    elif name == 'Dipartimento di Fisica':
+        return 5
+    elif name == 'Dipartimento di Chimica' or name == 'Dipartimento di Scienza e Tecnologia del Farmaco':
         return 6
-    elif name == 'Discipline Chirurgiche, Oncologiche e Stomatologiche':
+    elif name == 'Dipartimento di Scienze Chirurgiche' or name == 'Dipartimento di Biotecnologie Molecolari e Scienze per la Salute' or name == 'Dipartimento di Scienze Veterinarie' or name == 'Dipartimento di Oncologia' or name == 'Dipartimento di Scienze Mediche' or name == 'Dipartimento di Scienze della Sanità Pubblica e Pediatriche' or name == 'Dipartimento di Neuroscienze "Rita Levi Montalcini"':
         return 3
 
 
@@ -129,7 +215,7 @@ def data_random(anno_min, anno_max):
 
 
 def get_random_dipartimento():
-    index = random.randint(0,15)
+    index = random.randint(0,24)
     return dipartimenti[index]
 
 
