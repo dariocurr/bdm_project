@@ -1,4 +1,5 @@
 from database_connection import database_connection
+import numpy as np
 
 
 def fill_collabora_1():
@@ -17,6 +18,11 @@ def fill_collabora_1():
             n_rnd = np.random.randint(2, 6)
             for _ in range(1, n_rnd):
                 id_personale_rnd = np.random.randint(0, len(id_personale))
-                print("INSERT INTO collabora_1(personale, evento) VALUES({},{})".format(id_personale[id_personale_rnd][0], evento[0]))
+                collabora1 = (id_personale[id_personale_rnd][0], evento[0])
+                query = "INSERT INTO collabora_1(personale, evento) VALUES ("
+                for value in collabora1:
+                    query += "'" + str(value) + "',"
+                sql.execute_query(query[:-1] + ")")
+
 
 fill_collabora_1()

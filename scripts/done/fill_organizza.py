@@ -1,4 +1,5 @@
 from database_connection import database_connection
+import numpy as np
 
 
 def fill_organizza():
@@ -17,4 +18,11 @@ def fill_organizza():
             n_rnd = np.random.randint(2, 6)
             for _ in range(1, n_rnd):
                 id_personale = np.random.randint(0, len(id_personale_strutturato))
-                print("INSERT INTO organizza(personale_strutturato, evento) VALUES({},{})".format(id_personale_strutturato[id_personale][0], evento[0]))
+                organizza = (id_personale_strutturato[id_personale][0], evento[0])
+                query = "INSERT INTO organizza(personale_strutturato, evento) VALUES ("
+                for value in organizza:
+                    query += "'" + str(value) + "',"
+                sql.execute_query(query[:-1] + ")")
+
+
+fill_organizza()
