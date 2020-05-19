@@ -16,3 +16,6 @@ class database_connection():
             result = sql.fetchall()
             self._connection.commit()
             return result
+
+    def close_connection(self):
+        self._connection.close()
