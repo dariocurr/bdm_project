@@ -1,9 +1,9 @@
 from database_connection import database_connection
 
+
 id_uni = 1
 offset = 0
 for db in ["bdm_unipa", "bdm_unimi", "bdm_unito", "bdm_unina"]:
-    db += "_backup"
     sql = database_connection(db)
     tables = list(sql.execute_query("SHOW TABLES"))
     sql.close_connection()
