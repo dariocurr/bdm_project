@@ -1,6 +1,5 @@
 from database_connection import database_connection
 
-
 id_uni = 1
 offset = 0
 for db in ["bdm_unipa", "bdm_unimi", "bdm_unito", "bdm_unina"]:
@@ -25,6 +24,8 @@ for db in ["bdm_unipa", "bdm_unimi", "bdm_unito", "bdm_unina"]:
                 row = row + [id_uni]
             query = "INSERT INTO " + table[0] + " VALUES ("
             for value in row:
+                if isinstance(value, str):
+                    value = value.lower()
                 query += "'" + str(value) + "',"
             sql_uni.execute_query(query[:-1] + ")")
         print("caricata tabella " + table[0])
