@@ -37,5 +37,6 @@ CREATE TABLE evento (
     FOREIGN KEY(data) REFERENCES data(data),
     FOREIGN KEY(tipologia) REFERENCES tipologia(tipologia),
     FOREIGN KEY(argomento) REFERENCES argomento(argomento),
-    FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento)
+    FOREIGN KEY(dipartimento) REFERENCES dipartimento(id_dipartimento),
+    PRIMARY KEY(tipologia, dipartimento, argomento, data)
 );
