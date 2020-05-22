@@ -437,11 +437,11 @@
   <notepads>
   </notepads>
   <connection>
-    <name>unimi</name>
+    <name>uni</name>
     <server>bdm.zandes.net</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>bdm_unimi</database>
+    <database>bdm_uni_riconciliato</database>
     <port>3306</port>
     <username>bdm_root</username>
     <password>Encrypted 2be98afc86ad7808bac1cba64d190abd7</password>
@@ -524,7 +524,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>unimi</connection>
+    <connection>uni</connection>
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
@@ -587,14 +587,14 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>unimi</connection>
+    <connection>uni</connection>
     <sql>SELECT
   id_agenzia
 , nome
 , descrizione
 , tipologia
 , indirizzo
-FROM bdm_unimi.agenzia_esterna
+FROM bdm_uni_riconciliato.agenzia_esterna
 </sql>
     <limit>0</limit>
     <lookup/>
