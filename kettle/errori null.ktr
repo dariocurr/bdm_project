@@ -437,79 +437,53 @@
   <notepads>
   </notepads>
   <connection>
-    <name>unimi</name>
+    <name>bdm_uni_riconciliato</name>
     <server>bdm.zandes.net</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>bdm_unimi</database>
+    <database>bdm_uni_riconciliato</database>
     <port>3306</port>
-    <username>bdm_root</username>
+    <username>bdm</username>
     <password>Encrypted 2be98afc86ad7808bac1cba64d190abd7</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
       <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
         <code>PORT_NUMBER</code>
         <attribute>3306</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STREAM_RESULTS</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
       </attribute>
     </attributes>
   </connection>
   <order>
     <hop>
       <from>agenzia_esterna</from>
-      <to>tipologia</to>
+      <to>laboratorio_riferimento</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>tipologia</from>
-      <to>inidrizzo</to>
+      <from>laboratorio_riferimento</from>
+      <to>telefono</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>inidrizzo</from>
-      <to>descrizione</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>descrizione</from>
+      <from>telefono</from>
       <to>Insert / update</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>agenzia_esterna 2</from>
+      <to>laboratorio_riferimento 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>laboratorio_riferimento 2</from>
+      <to>telefono 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>telefono 2</from>
+      <to>Insert / update 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -524,41 +498,31 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>unimi</connection>
+    <connection>bdm_uni_riconciliato</connection>
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
-      <schema/>
-      <table>agenzia_esterna</table>
+      <schema>bdm_uni_riconciliato</schema>
+      <table>personale_non_strutturato</table>
       <key>
-        <name>id_agenzia</name>
-        <field>id_agenzia</field>
+        <name>id_personale_non_strutturato</name>
+        <field>id_personale_non_strutturato</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>id_agenzia</name>
-        <rename>id_agenzia</rename>
+        <name>id_personale_non_strutturato</name>
+        <rename>id_personale_non_strutturato</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>nome</name>
-        <rename>nome</rename>
+        <name>laboratorio_riferimento</name>
+        <rename>laboratorio_riferimento</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>descrizione</name>
-        <rename>descrizione</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tipologia</name>
-        <rename>tipologia</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>indirizzo</name>
-        <rename>indirizzo</rename>
+        <name>telefono</name>
+        <rename>telefono</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -571,8 +535,61 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
+      <xloc>576</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / update 2</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>bdm_uni_riconciliato</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>bdm_uni_riconciliato</schema>
+      <table>personale_non_strutturato</table>
+      <key>
+        <name>id_personale_non_strutturato</name>
+        <field>id_personale_non_strutturato</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id_personale_non_strutturato</name>
+        <rename>id_personale_non_strutturato</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>laboratorio_riferimento</name>
+        <rename>laboratorio_riferimento</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>telefono</name>
+        <rename>telefono</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -587,14 +604,12 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>unimi</connection>
+    <connection>bdm_uni_riconciliato</connection>
     <sql>SELECT
-  id_agenzia
-, nome
-, descrizione
-, tipologia
-, indirizzo
-FROM bdm_unimi.agenzia_esterna
+  id_personale_non_strutturato
+, laboratorio_riferimento
+, telefono
+FROM bdm_uni_riconciliato.personale_non_strutturato
 </sql>
     <limit>0</limit>
     <lookup/>
@@ -606,11 +621,11 @@ FROM bdm_unimi.agenzia_esterna
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>id_agenzia</name>
+        <name>id_personale_non_strutturato</name>
         <length>9</length>
         <precision>0</precision>
         <origin>agenzia_esterna</origin>
-        <comments>id_agenzia</comments>
+        <comments>id_personale_non_strutturato</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -622,41 +637,18 @@ FROM bdm_unimi.agenzia_esterna
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>it_IT</date_format_locale>
         <date_format_timezone>Europe/Berlin</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>nome</name>
-        <length>50</length>
-        <precision>-1</precision>
-        <origin>agenzia_esterna</origin>
-        <comments>nome</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>descrizione</name>
+        <name>laboratorio_riferimento</name>
         <length>16383</length>
         <precision>-1</precision>
         <origin>agenzia_esterna</origin>
-        <comments>descrizione</comments>
+        <comments>laboratorio_riferimento</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -668,18 +660,18 @@ FROM bdm_unimi.agenzia_esterna
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>it_IT</date_format_locale>
         <date_format_timezone>Europe/Berlin</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>tipologia</name>
-        <length>16383</length>
+        <name>telefono</name>
+        <length>15</length>
         <precision>-1</precision>
         <origin>agenzia_esterna</origin>
-        <comments>tipologia</comments>
+        <comments>telefono</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -691,30 +683,7 @@ FROM bdm_unimi.agenzia_esterna
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>Europe/Berlin</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>indirizzo</name>
-        <length>16383</length>
-        <precision>-1</precision>
-        <origin>agenzia_esterna</origin>
-        <comments>indirizzo</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
+        <date_format_locale>it_IT</date_format_locale>
         <date_format_timezone>Europe/Berlin</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -734,7 +703,116 @@ FROM bdm_unimi.agenzia_esterna
     </GUI>
   </step>
   <step>
-    <name>descrizione</name>
+    <name>agenzia_esterna 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>bdm_uni_riconciliato</connection>
+    <sql>SELECT
+  id_personale_non_strutturato
+, laboratorio_riferimento
+, telefono
+FROM bdm_uni_riconciliato.personale_non_strutturato
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>id_personale_non_strutturato</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>agenzia_esterna</origin>
+        <comments>id_personale_non_strutturato</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>it_IT</date_format_locale>
+        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>laboratorio_riferimento</name>
+        <length>16383</length>
+        <precision>-1</precision>
+        <origin>agenzia_esterna</origin>
+        <comments>laboratorio_riferimento</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>it_IT</date_format_locale>
+        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>telefono</name>
+        <length>15</length>
+        <precision>-1</precision>
+        <origin>agenzia_esterna</origin>
+        <comments>telefono</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>it_IT</date_format_locale>
+        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+    </row-meta>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>laboratorio_riferimento</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -744,13 +822,13 @@ FROM bdm_unimi.agenzia_esterna
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>descrizione</field_to_use>
+    <field_to_use>laboratorio_riferimento</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
       <field>
         <source_value/>
-        <target_value>descrizione mancante</target_value>
+        <target_value>laboratorio di riferimento non definito</target_value>
       </field>
     </fields>
     <attributes/>
@@ -762,13 +840,13 @@ FROM bdm_unimi.agenzia_esterna
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
+      <xloc>272</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>inidrizzo</name>
+    <name>laboratorio_riferimento 2</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -778,13 +856,47 @@ FROM bdm_unimi.agenzia_esterna
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>indirizzo</field_to_use>
+    <field_to_use>laboratorio_riferimento</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
       <field>
         <source_value/>
-        <target_value>indirizzo sconosciuto</target_value>
+        <target_value>laboratorio di riferimento non definito</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>telefono</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>telefono</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value/>
+        <target_value>dato assente</target_value>
       </field>
     </fields>
     <attributes/>
@@ -802,7 +914,7 @@ FROM bdm_unimi.agenzia_esterna
     </GUI>
   </step>
   <step>
-    <name>tipologia</name>
+    <name>telefono 2</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -812,13 +924,13 @@ FROM bdm_unimi.agenzia_esterna
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>tipologia</field_to_use>
+    <field_to_use>telefono</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
       <field>
         <source_value/>
-        <target_value>tipologia non definita</target_value>
+        <target_value>dato assente</target_value>
       </field>
     </fields>
     <attributes/>
@@ -830,8 +942,8 @@ FROM bdm_unimi.agenzia_esterna
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>208</yloc>
+      <xloc>400</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
