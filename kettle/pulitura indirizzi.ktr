@@ -507,11 +507,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>dizionario_localita</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>taglia fine indirizzo</from>
       <to>Stream lookup</to>
       <enabled>Y</enabled>
@@ -524,6 +519,16 @@
     <hop>
       <from>regione e sigla</from>
       <to>Insert / update</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>dizionario_localita</from>
+      <to>to lower</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>to lower</from>
+      <to>Stream lookup</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -571,52 +576,6 @@
     </GUI>
   </step>
   <step>
-    <name>regione e sigla</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//script
-var indirizzo_completo = regione + ", " + sigla_provincia;
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>indirizzo_completo</name>
-        <rename>indirizzo_completo</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>960</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Stream lookup</name>
     <type>StreamLookup</type>
     <description/>
@@ -627,7 +586,7 @@ var indirizzo_completo = regione + ", " + sigla_provincia;
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <from>dizionario_localita</from>
+    <from>to lower</from>
     <input_sorted>N</input_sorted>
     <preserve_memory>Y</preserve_memory>
     <sorted_list>N</sorted_list>
@@ -641,13 +600,13 @@ var indirizzo_completo = regione + ", " + sigla_provincia;
         <name>regione</name>
         <rename>regione</rename>
         <default/>
-        <type>None</type>
+        <type>String</type>
       </value>
       <value>
         <name>sigla_provincia</name>
         <rename>sigla_provincia</rename>
         <default/>
-        <type>None</type>
+        <type>String</type>
       </value>
     </lookup>
     <attributes/>
@@ -661,6 +620,72 @@ var indirizzo_completo = regione + ", " + sigla_provincia;
     <GUI>
       <xloc>800</xloc>
       <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>to lower</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>provincia</in_stream_name>
+        <out_stream_name/>
+        <trim_type>none</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>regione</in_stream_name>
+        <out_stream_name/>
+        <trim_type>none</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>sigla_provincia</in_stream_name>
+        <out_stream_name/>
+        <trim_type>none</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>800</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -734,7 +759,7 @@ var indirizzo_completo = regione + ", " + sigla_provincia;
     </remotesteps>
     <GUI>
       <xloc>800</xloc>
-      <yloc>320</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -815,6 +840,52 @@ var indirizzo_completo = regione + ", " + sigla_provincia;
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>regione e sigla</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//script
+var indirizzo_completo = regione + ", " + sigla_provincia;
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>indirizzo_completo</name>
+        <rename>indirizzo_completo</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
