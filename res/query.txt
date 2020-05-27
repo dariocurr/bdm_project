@@ -3,12 +3,12 @@ Query:
     2 Quali attività di ricerca hanno massimizzato i fondi in ingresso per i dipartimenti di Informatica nell'ultimo triennio?
     3 Quanti professori ordinari hanno organizzato congressi all'estero nel 2010, per ciascun dipartimento dell'Università degli Studi di Palermo?
     4 Qual è stato il numero medio dei partecipanti a scuole di dottorato su Data Mining organizzate da ciascun dipartimento della Regione Sicilia dal 2005 ad oggi?
-    5 Quale dipartimento è riuscito a ricavare di più dall'organizzazione di eventi nell'ultimo anno alla Sapienza?
+    5 Quale dipartimento è riuscito a ricavare di più dall'organizzazione di eventi nell'ultimo anno alla Università Federico II?
     6 Quanto grava, in media e con riferimento agli ultimi dieci anni, il costo del personale non strutturato sui dipartimenti dell'Università degli Studi di Palermo?
     7 Quali dipartimenti hanno massimizzato sia il numero di pubblicazioni che la diversificazione per argomento durante gli ultimi cinque anni in Sicilia?
     8 Se le pubblicazioni scientifiche sono caratterizzate anche attraverso un indice di qualità, mostrare l’andamento delle pubblicazioni per categoria di dipendente universitario e area geografica rispetto a tale indice, negli ultimi cinque anni.
     9 Per le diverse tipologie di dipartimento (es. umanistici, scientifici, ecc.) rapportare il maggior numero di promozioni avvenuto nell’ultimo anno con l’indice di qualità medio delle promozioni per categoria di dipendente (le promozioni avvengono nella seguente direzione: Ricercatore Universitario -> Professore Associato -> Professore Ordinario).
-    10 Quali tipi di eventi nelle università di Roma hanno massimizzato il numero di partecipanti nell’ultimo anno?
+    10 Quali tipi di eventi nelle università di Napoli hanno massimizzato il numero di partecipanti nell’ultimo anno?
     11 Quali eventi, tra quelli con più ricavi, tenuti dall’università di Torino hanno massimizzato il rapporto tra portata dell’edificio e partecipanti effettivi negli ultimi 2 anni?
     12 Quali sono le università che hanno divulgato pubblicazioni con indice di qualità sopra una soglia x in media nell’ultimo anno?
     13 Qual è la figura tra il personale strutturato del politecnico di Napoli (professore ordinario, ...) che ha organizzato il maggior numero di eventi, negli ultimi 5 anni?
@@ -28,7 +28,7 @@ Query:
 Fatti:
   - Organizza: 3, 13
   - Evento: 4, 5, 10, 11
-  - Voce spesa: 2, 6, 18, 21, 22
+  - Voce spesa: 22
   - Pubblica: 7, 8
   - Promozione: 9, 23
   Partecipa_2: 1
@@ -39,6 +39,8 @@ Fatti:
   Personale TA: 24
   Finanzia_1: 17
   Voce fondo: 16
+  Retribuisce: 6, 21
+  Finanzia_3: 2, 18	
 
 
 Sono stati creati gli alberi solo dei fatti contrassegnati con '*'.
