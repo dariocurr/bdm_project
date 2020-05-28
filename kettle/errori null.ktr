@@ -458,32 +458,37 @@
   <order>
     <hop>
       <from>agenzia_esterna</from>
-      <to>laboratorio_riferimento</to>
+      <to>tipologia</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>laboratorio_riferimento</from>
-      <to>telefono</to>
+      <from>tipologia</from>
+      <to>indirizzo</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>telefono</from>
+      <from>personale_non_strutturato</from>
+      <to>laboratorio_riferimento </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>laboratorio_riferimento </from>
+      <to>telefono </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>telefono </from>
+      <to>Insert / update </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>indirizzo</from>
+      <to>descrizione</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>descrizione</from>
       <to>Insert / update</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>agenzia_esterna 2</from>
-      <to>laboratorio_riferimento 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>laboratorio_riferimento 2</from>
-      <to>telefono 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>telefono 2</from>
-      <to>Insert / update 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -503,27 +508,32 @@
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>bdm_uni_riconciliato</schema>
-      <table>personale_non_strutturato</table>
+      <table>agenzia_esterna</table>
       <key>
-        <name>id_personale_non_strutturato</name>
-        <field>id_personale_non_strutturato</field>
+        <name>id_agenzia</name>
+        <field>id_agenzia</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>id_personale_non_strutturato</name>
-        <rename>id_personale_non_strutturato</rename>
+        <name>id_agenzia</name>
+        <rename>id_agenzia</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>laboratorio_riferimento</name>
-        <rename>laboratorio_riferimento</rename>
+        <name>tipologia</name>
+        <rename>tipologia</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>telefono</name>
-        <rename>telefono</rename>
+        <name>indirizzo</name>
+        <rename>indirizzo</rename>
         <update>Y</update>
+      </value>
+      <value>
+        <name>descrizione</name>
+        <rename>descrizione</rename>
+        <update>N</update>
       </value>
     </lookup>
     <attributes/>
@@ -535,13 +545,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>640</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Insert / update 2</name>
+    <name>Insert / update </name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -606,10 +616,11 @@
     </partitioning>
     <connection>bdm_uni_riconciliato</connection>
     <sql>SELECT
-  id_personale_non_strutturato
-, laboratorio_riferimento
-, telefono
-FROM bdm_uni_riconciliato.personale_non_strutturato
+  id_agenzia
+, tipologia
+, indirizzo
+, descrizione
+FROM bdm_uni_riconciliato.agenzia_esterna
 </sql>
     <limit>0</limit>
     <lookup/>
@@ -621,11 +632,11 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>id_personale_non_strutturato</name>
+        <name>id_agenzia</name>
         <length>9</length>
         <precision>0</precision>
         <origin>agenzia_esterna</origin>
-        <comments>id_personale_non_strutturato</comments>
+        <comments>id_agenzia</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -644,11 +655,11 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>laboratorio_riferimento</name>
+        <name>tipologia</name>
         <length>16383</length>
         <precision>-1</precision>
         <origin>agenzia_esterna</origin>
-        <comments>laboratorio_riferimento</comments>
+        <comments>tipologia</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -667,11 +678,34 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>telefono</name>
-        <length>15</length>
+        <name>indirizzo</name>
+        <length>16383</length>
         <precision>-1</precision>
         <origin>agenzia_esterna</origin>
-        <comments>telefono</comments>
+        <comments>indirizzo</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>it_IT</date_format_locale>
+        <date_format_timezone>Europe/Berlin</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>descrizione</name>
+        <length>16383</length>
+        <precision>-1</precision>
+        <origin>agenzia_esterna</origin>
+        <comments>descrizione</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -703,7 +737,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
     </GUI>
   </step>
   <step>
-    <name>agenzia_esterna 2</name>
+    <name>personale_non_strutturato</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -733,7 +767,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
         <name>id_personale_non_strutturato</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>agenzia_esterna</origin>
+        <origin>agenzia_esterna 2</origin>
         <comments>id_personale_non_strutturato</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
@@ -756,7 +790,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
         <name>laboratorio_riferimento</name>
         <length>16383</length>
         <precision>-1</precision>
-        <origin>agenzia_esterna</origin>
+        <origin>agenzia_esterna 2</origin>
         <comments>laboratorio_riferimento</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -779,7 +813,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
         <name>telefono</name>
         <length>15</length>
         <precision>-1</precision>
-        <origin>agenzia_esterna</origin>
+        <origin>agenzia_esterna 2</origin>
         <comments>telefono</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
@@ -812,7 +846,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
     </GUI>
   </step>
   <step>
-    <name>laboratorio_riferimento</name>
+    <name>tipologia</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -822,13 +856,13 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>laboratorio_riferimento</field_to_use>
+    <field_to_use>tipologia</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
       <field>
         <source_value/>
-        <target_value>laboratorio di riferimento non definito</target_value>
+        <target_value>tipologia non definita</target_value>
       </field>
     </fields>
     <attributes/>
@@ -846,7 +880,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
     </GUI>
   </step>
   <step>
-    <name>laboratorio_riferimento 2</name>
+    <name>laboratorio_riferimento </name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -880,7 +914,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
     </GUI>
   </step>
   <step>
-    <name>telefono</name>
+    <name>indirizzo</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -890,13 +924,13 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>telefono</field_to_use>
+    <field_to_use>indirizzo</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
       <field>
         <source_value/>
-        <target_value>dato assente</target_value>
+        <target_value>indirizzo sconosciuto</target_value>
       </field>
     </fields>
     <attributes/>
@@ -914,7 +948,7 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
     </GUI>
   </step>
   <step>
-    <name>telefono 2</name>
+    <name>telefono </name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -944,6 +978,40 @@ FROM bdm_uni_riconciliato.personale_non_strutturato
     <GUI>
       <xloc>400</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>descrizione</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>descrizione</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value/>
+        <target_value>descrizione mancate</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
