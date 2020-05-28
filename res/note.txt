@@ -1,8 +1,0 @@
-Voce spesa
-PER voce spesa abbiamo eliminato nome perchè è una dimensione ridondante poichè per sapere se una spesa fa riferimento a personale o Progetto
-basta guardare le chiavi esterne, se ad esempio la chiave esterne personale_non_strutturato è null significa che quella spesa fa riferimento al progetto.
-Inoltre è stato eliminato l'attributo stipendio dal personale poichè lo stipendio coincide all'importo di voce spesa.
-Ad esempio se abbiamo voce spesa con id_personale_non_strutturato 1 ed importo x significa che quel personale_non_strutturato con id 1 avrà stipendio x 
-
-Voce fondo
-nome: contiene il nome del fondo a cui ci stiamo riferenti, ad esempio x euro destinati alle sedie, y euro destinati alle attività di ricerca, etc.
