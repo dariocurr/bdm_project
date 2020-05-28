@@ -28,9 +28,9 @@ Query:
 Fatti:
   - Organizza: 3, 13
   - Evento: 4, 5, 10, 11
-  - Voce spesa: 22
-  - Pubblica: 7, 8
-  - Promozione: 9, 23
+  Voce spesa: 22
+  Pubblica: 7, 8
+  Promozione: 9, 23
   Partecipa_2: 1
   Progetto ricerca: 14
   Dipartimento: 15
@@ -40,7 +40,7 @@ Fatti:
   Finanzia_1: 17
   Voce fondo: 16
   Retribuisce: 6, 21
-  Finanzia_3: 2, 18	
+  Finanzia_3: 2, 18
 
 
 Sono stati creati gli alberi solo dei fatti contrassegnati con '*'.
