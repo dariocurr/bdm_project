@@ -1,5 +1,5 @@
 # Big Data Management
-Progettazione di un Data Warehouse
+### Progettazione di un Data Warehouse
 
 In questo progetto abbiamo affrontato la progettazione e l’analisi di un data warehouse a partire
 da uno schema E/R e da 4 database sorgenti. 
