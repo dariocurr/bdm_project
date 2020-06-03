@@ -13,7 +13,7 @@ Le fasi affrontate sono state quelle relative a:
 * Progettazione logica
 * Progettazione fisica
 
-Create le 4 sorgenti iniziali, popolate tramite script e open data, utilizzando il modulo Kettle della suite Pentaho sono stati implementati gli strumenti ETL per la pulizia e la correzione dei dati. Successivamente, fornite le query di interesse, sono stati progettati i datamart (e implementati tramite viste) che sono stati interrogati tramite il plugin Saiku di Pentaho. 
+Create le 4 sorgenti iniziali, popolate tramite script e open data, utilizzando il modulo _Kettle_ della suite _Pentaho_ sono stati implementati gli strumenti ETL per la pulizia e la correzione dei dati. Successivamente, fornite le query di interesse, sono stati progettati i datamart (e implementati tramite viste) che sono stati interrogati tramite il plugin _Saiku_ di _Pentaho_. 
 
 ### Team 1
 
